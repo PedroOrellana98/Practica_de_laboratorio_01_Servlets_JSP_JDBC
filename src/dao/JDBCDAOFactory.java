@@ -1,5 +1,11 @@
 package dao;
 
+import mysql.jdbc.JDBCCategoriaDAO;
+import mysql.jdbc.JDBCProductoDAO;
+import mysql.jdbc.JDBCEmpresaDAO;
+import mysql.jdbc.JDBCUsuarioDAO;
+import mysql.jdbc.JDBCRequerimientoDAO;
+
 public class JDBCDAOFactory extends DAOFactory {
 
 	public void createTables() {
