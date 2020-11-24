@@ -13,21 +13,52 @@
 <!-- Materialize SCRIPT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <nav class="cyan darken-4">
+  <nav class="cyan darken-2">
     <div class="nav-wrapper container">
       <a href="./Usuario.jsp" class="brand-logo">Usuario</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      	<li><a href="./Registrar.jsp">Registrar</a></li>
+      	<li><a href="./Registrar.jsp">Agregar</a></li>
         <li><a href="./Buscar.jsp">Buscar</a></li>
         <li><a href="./Listar.jsp">Listar</a></li>
         <li><a href="./Home.jsp">Salir</a></li>
       </ul>
     </div>
   </nav>
+  
+  <c:set var="t1" value="${requestScope['']}"/>
+  <c:set var="p2" value="${requestScope[''] }"/>
+  
+<div class="container">
+	<h3>Bienvenido</h3>
+  	<h4> ${ p2.nombre } ${p2.apellido }</h4>
+	
+	<table class="highlight centered">
+	<thead>
+		<tr>
+			<th>Producto</th>
+			<th>Categoria</th>
+			<th>Estado</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach var="telf" items="${t1}">
+			<tr>	
+				<td>${telf.telf_id}</td>
+				<td>${telf.numero}</td>
+				<td>${telf.tipo}</td>
+				<td><a class="waves-effect waves-light btn red">Eliminar</a>
+				<a class="waves-effect waves-light btn yellow">Modificar</a></td>
+			</tr>
+		</c:forEach>
+	</tbody>
+	</table>
 
+</div>  
+  	
 
 </body>
-<footer class="page-footer blue darken-4">
+<footer class="page-footer cyan darken-4">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -39,13 +70,13 @@
                 <p class="grey-text text-lighten-4">Daniel Peralta</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <!--<h5 class="white-text">Links</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
+                </ul>-->
               </div>
             </div>
           </div>

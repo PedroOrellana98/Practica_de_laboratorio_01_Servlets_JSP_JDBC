@@ -26,11 +26,34 @@
   </nav>
 
 <div class="container">
+	<h3>Bienvenido</h3>
+  	<h4> ${ p2.nombre } ${p2.apellido }</h4>
 	
+	<table class="highlight centered">
+	<thead>
+		<tr>
+			<th>Producto</th>
+			<th>Categoria</th>
+			<th>Estado</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach var="telf" items="${t1}">
+			<tr>	
+				<td>${telf.telf_id}</td>
+				<td>${telf.numero}</td>
+				<td>${telf.tipo}</td>
+				<td><a class="waves-effect waves-light btn red">Eliminar</a>
+				<a class="waves-effect waves-light btn yellow">Modificar</a></td>
+			</tr>
+		</c:forEach>
+	</tbody>
+	</table>
 </div>
 
 </body>
-<footer class="page-footer blue darken-4">
+<footer class="page-footer blue-grey darken-4">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -42,13 +65,13 @@
                 <p class="grey-text text-lighten-4">Daniel Peralta</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <!--<h5 class="white-text">Links</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
+                </ul>-->
               </div>
             </div>
           </div>
@@ -57,5 +80,5 @@
             © 2020 Copyright Text
             </div>
           </div>
-</footer>
+</footer>s
 </html>
