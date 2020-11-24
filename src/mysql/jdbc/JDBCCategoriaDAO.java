@@ -7,6 +7,7 @@ import java.util.List;
 
 import dao.CategoriaDAO;
 import modelo.Categoria;
+import modelo.Usuario;
 
 public class JDBCCategoriaDAO extends JDBCGenericDAO<Categoria, String> implements CategoriaDAO{
 	
@@ -62,6 +63,12 @@ public class JDBCCategoriaDAO extends JDBCGenericDAO<Categoria, String> implemen
 			}
 			return list;
 		
+	}
+
+	@Override
+	public Usuario buscar(String correo, String clave) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

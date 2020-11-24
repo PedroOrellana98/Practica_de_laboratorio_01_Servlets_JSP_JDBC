@@ -17,7 +17,7 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	@Override
 	public void create(Usuario usuario) {
 		// TODO Auto-generated method stub
-		conexionUno.update("INSERT Usuario VALUES (" + usuario.getIdUsuario() + ", " + usuario.getNombre() + ", '" 
+		conexionUno.update("INSERT usuario VALUES (" + usuario.getIdUsuario() + ", " + usuario.getNombre() + ", '" 
 		+ usuario.getApellido() + "', '" + usuario.getCorreo() + "', '" + usuario.getClave() + "', '" 
 		+ usuario.getRol() + "')");
 	}
@@ -25,8 +25,9 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	@Override
 	public Usuario read(String id) {
 		// TODO Auto-generated method stub
+		System.out.println("Entro a la base de datos");
 		Usuario user = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM Usuario WHERE id=" + id);
+		ResultSet rs = conexionUno.query("SELECT * FROM usuario WHERE id=" + id);
 		try {
 			if (rs != null && rs.next()) {
 				user = new Usuario(rs.getString("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
@@ -41,7 +42,7 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	@Override
 	public void update(Usuario usuario) {
 		// TODO Auto-generated method stub
-		conexionUno.update("UPDATE Usuario SET nombre = '" + usuario.getNombre() + "', apellido = '" + usuario.getClave()
+		conexionUno.update("UPDATE usuario SET nombre = '" + usuario.getNombre() + "', apellido = '" + usuario.getClave()
 		+ "', correo= " + usuario.getCorreo() + "', clave= " + usuario.getClave()+ "', rol= " + usuario.getRol() 
 		+ " WHERE id = " + usuario.getIdUsuario());
 	}
@@ -49,7 +50,7 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	@Override
 	public void delete(Usuario usuario) {
 		// TODO Auto-generated method stub
-		conexionUno.update("DELETE FROM Usuario WHERE id = " + usuario.getIdUsuario());
+		conexionUno.update("DELETE FROM usuario WHERE id = " + usuario.getIdUsuario());
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		//System.out.println("Email: ------------- "+email.toString());
 		int i=0;
 		Usuario usuarioObject = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM Usuario WHERE  correo=" +  "'" + correo + "'" + "AND clave=" +  "'" + clave + "'" );
+		ResultSet rs = conexionUno.query("SELECT * FROM usuario WHERE  correo=" +  "'" + correo + "'" + "AND clave=" +  "'" + clave + "'" );
 		try {
 			if (rs != null && rs.next()) {
 				i=1;

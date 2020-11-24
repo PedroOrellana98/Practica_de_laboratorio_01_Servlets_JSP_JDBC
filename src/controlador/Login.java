@@ -17,7 +17,7 @@ import modelo.Usuario;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/Login")
+@WebServlet(name = "Login", urlPatterns = "/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -65,16 +65,16 @@ public class Login extends HttpServlet {
 
 		sesion.setAttribute("accesos", sesion.getId());
 		System.out.println("ID sesion: " + String.valueOf(sesion.getId()));
+		
 		if (accion.equals("Login")) {
 			correo = request.getParameter("correo");
 			clave = request.getParameter("clave");
 			user = usuarioDao.buscar(correo, clave);
 			System.out.println("retorno de usuario: "+ usuarioDao.buscar(correo, clave));
-			url="/JSPs/IndexUsuario.jsp";
+			url="/JSPs/Usuario.jsp";
 			try {
 				if (user != null) {
 					request.setAttribute("usuario", user);
-					
 					getServletContext().getRequestDispatcher(url).forward(request, response);
 				} 
 			} catch (Exception e) {

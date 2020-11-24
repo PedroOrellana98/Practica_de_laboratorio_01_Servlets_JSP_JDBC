@@ -10,6 +10,7 @@ import java.util.List;
 import dao.ProductoDAO;
 import modelo.Categoria;
 import modelo.Producto;
+import modelo.Usuario;
 
 public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements ProductoDAO {
 	
@@ -73,6 +74,12 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 		}
 
 		return list;
+	}
+
+	@Override
+	public Usuario buscar(String correo, String clave) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

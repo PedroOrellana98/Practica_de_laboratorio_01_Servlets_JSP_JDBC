@@ -42,13 +42,13 @@
     	<form class="col s12" action="Login" method="POST">
     		<div class="row">
         		<div class="input-field col s12">
-          			<input id="email" name = "correo" type="email" class="validate">
+          			<input id="email" name="correo" type="email">
           			<label for="email">Correo</label>
         		</div>
       		</div>
       		 <div class="row">
         		<div class="input-field col s12">
-          			<input id="password" name = "clave" type="password" class="validate">
+          			<input id="password" name="clave" type="password">
           			<label for="password">Contraseña</label>
         		</div>
       		</div>
