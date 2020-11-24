@@ -17,7 +17,7 @@ import modelo.Usuario;
 /**
  * Servlet implementation class Login
  */
-@WebServlet(name = "Login", urlPatterns = "/Login")
+@WebServlet(name = "Login", urlPatterns = { "/Login" })
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -81,7 +81,7 @@ public class Login extends HttpServlet {
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 		}else {
-			getServletContext().getRequestDispatcher("/JSPs/InicioSesion.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("../JSPs/InicioSesion.jsp").forward(request, response);
 		}
 	}
 
