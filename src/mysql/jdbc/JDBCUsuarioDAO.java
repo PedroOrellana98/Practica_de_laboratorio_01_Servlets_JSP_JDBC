@@ -1,5 +1,7 @@
 package mysql.jdbc;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import dao.UsuarioDAO;
@@ -10,10 +12,6 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	@Override
 	public void createTable() {
 		// TODO Auto-generated method stub
-		conexionUno.update("DROP TABLE IF EXISTS Usuario");
-		conexionUno.update("CREATE TABLE Usuario (" + "ID INT NOT NULL, " + "NOMBRE VARCHAR(100) NOT NULL, "
-				+ "APELLIDO VARCHAR(100) NOT NULL, CORREO VARCHAR(200) NOT NULL, CLAVE VARCHAR(50) NOT NULL,"
-				+ "ROL VARCHAR(1) NOT NULL, PRIMARY KEY (ID))");
 	}
 
 	@Override
@@ -27,7 +25,17 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	@Override
 	public Usuario read(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		Usuario user = null;
+		ResultSet rs = conexionUno.query("SELECT * FROM Usuario WHERE id=" + id);
+		try {
+			if (rs != null && rs.next()) {
+				user = new Usuario(rs.getString("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
+			}
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCUserDAO:read): " + e.getMessage());
+		}
+		return user;
+		
 	}
 
 	@Override
@@ -50,6 +58,25 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		return null;
 	}
 	
+	
+	@Override
+	public Usuario buscar(String correo, String clave) {
+		// TODO Auto-generated method stub
+		
+		//System.out.println("Email: ------------- "+email.toString());
+		int i=0;
+		Usuario usuarioObject = null;
+		ResultSet rs = conexionUno.query("SELECT * FROM Usuario WHERE  correo=" +  "'" + correo + "'" + "AND clave=" +  "'" + clave + "'" );
+		try {
+			if (rs != null && rs.next()) {
+				i=1;
+				usuarioObject = new Usuario (rs.getString("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
+			}
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
+		}
+		return usuarioObject;
+	}
 	
 
 }

@@ -16,9 +16,6 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 	@Override
 	public void createTable() {
 		// TODO Auto-generated method stub
-		conexionDos.update("DROP TABLE IF EXISTS Producto");
-		conexionDos.update("CREATE TABLE Producto ( ID INT NOT NULL, NOMBRE VARCHAR(200) NOT NULL, "
-				+ "PRIMARY KEY (ID), FOREIGN KEY(CATEGORIA_ID) REFERENCES CATEGORIA(ID))");
 	}
 
 	@Override

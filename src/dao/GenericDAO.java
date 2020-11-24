@@ -2,6 +2,8 @@ package dao;
 
 import java.util.List;
 
+import modelo.Usuario;
+
 public interface GenericDAO<T, ID> {
 
 	public void createTable();
@@ -15,5 +17,7 @@ public interface GenericDAO<T, ID> {
 	public void delete(T entity);
 
 	public List<T> find();
+	
+	Usuario buscar(String correo, String clave);
 
 }

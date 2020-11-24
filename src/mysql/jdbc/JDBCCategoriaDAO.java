@@ -12,9 +12,7 @@ public class JDBCCategoriaDAO extends JDBCGenericDAO<Categoria, String> implemen
 	
 	@Override
 	public void createTable() {
-		conexionUno.update("DROP TABLE IF EXISTS Categoria");
-		conexionUno.update("CREATE TABLE Categoria (" + "ID INT NOT NULL, " + "NOMBRE VARCHAR(200) NOT NULL, "
-				+ "PRIMARY KEY (ID))");
+		// TODO Auto-generated method stub
 	}
 
 	@Override
