@@ -7,14 +7,13 @@ import java.util.List;
 
 import dao.CategoriaDAO;
 import modelo.Categoria;
+import modelo.Usuario;
 
 public class JDBCCategoriaDAO extends JDBCGenericDAO<Categoria, String> implements CategoriaDAO{
 	
 	@Override
 	public void createTable() {
-		conexionUno.update("DROP TABLE IF EXISTS Categoria");
-		conexionUno.update("CREATE TABLE Categoria (" + "ID INT NOT NULL, " + "NOMBRE VARCHAR(200) NOT NULL, "
-				+ "PRIMARY KEY (ID))");
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -64,6 +63,12 @@ public class JDBCCategoriaDAO extends JDBCGenericDAO<Categoria, String> implemen
 			}
 			return list;
 		
+	}
+
+	@Override
+	public Usuario buscar(String correo, String clave) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

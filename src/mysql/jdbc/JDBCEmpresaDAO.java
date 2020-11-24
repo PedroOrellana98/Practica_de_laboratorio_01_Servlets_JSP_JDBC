@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.EmpresaDAO;
 import modelo.Empresa;
+import modelo.Usuario;
 
 public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, String> implements EmpresaDAO{
 
@@ -39,6 +40,12 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, String> implements E
 
 	@Override
 	public List<Empresa> find() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario buscar(String correo, String clave) {
 		// TODO Auto-generated method stub
 		return null;
 	}

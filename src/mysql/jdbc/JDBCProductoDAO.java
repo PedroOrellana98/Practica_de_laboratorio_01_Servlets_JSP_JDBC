@@ -10,15 +10,13 @@ import java.util.List;
 import dao.ProductoDAO;
 import modelo.Categoria;
 import modelo.Producto;
+import modelo.Usuario;
 
 public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements ProductoDAO {
 	
 	@Override
 	public void createTable() {
 		// TODO Auto-generated method stub
-		conexionDos.update("DROP TABLE IF EXISTS Producto");
-		conexionDos.update("CREATE TABLE Producto ( ID INT NOT NULL, NOMBRE VARCHAR(200) NOT NULL, "
-				+ "PRIMARY KEY (ID), FOREIGN KEY(CATEGORIA_ID) REFERENCES CATEGORIA(ID))");
 	}
 
 	@Override
@@ -76,6 +74,12 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 		}
 
 		return list;
+	}
+
+	@Override
+	public Usuario buscar(String correo, String clave) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

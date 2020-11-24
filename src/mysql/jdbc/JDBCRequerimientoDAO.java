@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.RequerimientosDAO;
 import modelo.ListaRequerimientos;
+import modelo.Usuario;
 
 public class JDBCRequerimientoDAO extends JDBCGenericDAO<ListaRequerimientos, String> implements RequerimientosDAO {
 
@@ -39,6 +40,12 @@ public class JDBCRequerimientoDAO extends JDBCGenericDAO<ListaRequerimientos, St
 
 	@Override
 	public List<ListaRequerimientos> find() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario buscar(String correo, String clave) {
 		// TODO Auto-generated method stub
 		return null;
 	}
