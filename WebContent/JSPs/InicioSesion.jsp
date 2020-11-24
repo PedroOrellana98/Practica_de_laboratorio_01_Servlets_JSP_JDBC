@@ -38,7 +38,7 @@
       </div>
       <div class="col s4">
         <div class="row">
-    	<form class="col s12">
+    	<form class="col s12" action="/Practica-1/AgregarNumero?ced=${p2 }" method="POST">
     		<div class="row">
         		<div class="input-field col s12">
           			<input id="email" type="email" class="validate">
@@ -80,13 +80,13 @@
                 <p class="grey-text text-lighten-4">Daniel Peralta</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <!--<h5 class="white-text">Links</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
+                </ul>-->
               </div>
             </div>
           </div>
