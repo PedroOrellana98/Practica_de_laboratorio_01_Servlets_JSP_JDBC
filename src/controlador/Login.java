@@ -2,6 +2,8 @@ package controlador;
 
 import java.io.Console;
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +19,7 @@ import modelo.Usuario;
 /**
  * Servlet implementation class Login
  */
-@WebServlet(name = "Login", urlPatterns = { "/Login" })
+@WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -51,7 +53,6 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
-		System.out.println("Entro");
 
 		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
 		String correo = "";
@@ -71,7 +72,7 @@ public class Login extends HttpServlet {
 			clave = request.getParameter("clave");
 			user = usuarioDao.buscar(correo, clave);
 			System.out.println("retorno de usuario: "+ usuarioDao.buscar(correo, clave));
-			url="/JSPs/Usuario.jsp";
+			url="JSPs/Usuario.jsp";
 			try {
 				if (user != null) {
 					request.setAttribute("usuario", user);
@@ -81,7 +82,8 @@ public class Login extends HttpServlet {
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 		}else {
-			getServletContext().getRequestDispatcher("../JSPs/InicioSesion.jsp").forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("JSPs/InicioSesion.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 
