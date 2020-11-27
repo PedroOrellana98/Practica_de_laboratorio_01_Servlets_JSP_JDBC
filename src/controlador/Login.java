@@ -58,16 +58,16 @@ public class Login extends HttpServlet {
 		String correo = "";
 		String clave = "";
 		String url = null;
-		int i = 0;
 
-		String accion = request.getParameter("action");
+		Object accion = request.getParameter("action");
 		Usuario user = new Usuario();
 		HttpSession sesion = request.getSession(true);
 
 		sesion.setAttribute("accesos", sesion.getId());
 		System.out.println("ID sesion: " + String.valueOf(sesion.getId()));
+		System.out.println(accion);
 		
-		if (accion.equals("Login")) {
+		if (accion.equals("login")) {
 			correo = request.getParameter("correo");
 			clave = request.getParameter("clave");
 			user = usuarioDao.buscar(correo, clave);
@@ -76,13 +76,13 @@ public class Login extends HttpServlet {
 			try {
 				if (user != null) {
 					request.setAttribute("usuario", user);
-					getServletContext().getRequestDispatcher(url).forward(request, response);
+					request.getRequestDispatcher(url).forward(request, response);
 				} 
 			} catch (Exception e) {
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("JSPs/InicioSesion.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../JSPs/InicioSesion.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

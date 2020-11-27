@@ -52,7 +52,7 @@
         		</div>
       		</div>
       		<div class="center">
-    			<button class="btn waves-effect waves-light green" type="submit" name="action">Iniciar sesión</button>
+    			<button class="btn waves-effect waves-light green" type="submit" name="action" value="login">Iniciar sesión</button>
     		</div>
     	</form>
     </div>
