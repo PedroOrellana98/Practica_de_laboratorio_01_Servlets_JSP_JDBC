@@ -22,7 +22,7 @@ import java.sql.Statement;
 
 public class ContextJDBC {
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/db_Servlets";
+	private static final String URL = "jdbc:mysql://localhost:3306/mydb";
 	private static final String USER = "root";
 	private static final String PASS = "Patito.123";
 	private static ContextJDBC jdbc1 = null;
