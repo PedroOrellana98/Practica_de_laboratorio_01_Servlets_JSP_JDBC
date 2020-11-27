@@ -72,6 +72,7 @@ public class Login extends HttpServlet {
 			clave = request.getParameter("clave");
 			user = usuarioDao.buscar(correo, clave);
 			System.out.println("retorno de usuario: "+ usuarioDao.buscar(correo, clave));
+			System.out.println("Correo: " + correo + ", Clave: " + clave);
 			url="JSPs/Usuario.jsp";
 			try {
 				if (user != null) {
