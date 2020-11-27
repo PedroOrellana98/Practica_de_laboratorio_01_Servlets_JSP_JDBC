@@ -67,16 +67,17 @@ public class Login extends HttpServlet {
 		sesion.setAttribute("accesos", sesion.getId());
 		System.out.println("ID sesion: " + String.valueOf(sesion.getId()));
 		
-		if (accion.equals("Login")) {
+		if (accion.equals("login")) {
 			correo = request.getParameter("correo");
 			clave = request.getParameter("clave");
 			user = usuarioDao.buscar(correo, clave);
 			System.out.println("retorno de usuario: "+ usuarioDao.buscar(correo, clave));
+			System.out.println("Correo: " + correo + ", Clave: " + clave);
 			url="JSPs/Usuario.jsp";
 			try {
 				if (user != null) {
 					request.setAttribute("usuario", user);
-					getServletContext().getRequestDispatcher(url).forward(request, response);
+					request.getRequestDispatcher(url).forward(request, response);
 				} 
 			} catch (Exception e) {
 				System.out.println("Error en el login: " + e.getMessage());
