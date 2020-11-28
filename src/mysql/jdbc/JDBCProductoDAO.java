@@ -22,7 +22,7 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 	@Override
 	public void create(Producto producto) {
 		// TODO Auto-generated method stub
-		conexionDos.update("INSERT Producto VALUES (" + producto.getIdProducto() + ", " + producto.getNombre() + ")");
+		conexionDos.update("INSERT INTO Producto VALUES (" + producto.getIdProducto() + ", " + producto.getNombre() + ")");
 	}
 
 	@Override

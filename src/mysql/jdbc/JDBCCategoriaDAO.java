@@ -62,7 +62,6 @@ public class JDBCCategoriaDAO extends JDBCGenericDAO<Categoria, String> implemen
 				System.out.println(">>>WARNING (JDBCCategoryDAO:find): " + e.getMessage());
 			}
 			return list;
-		
 	}
 
 	@Override
