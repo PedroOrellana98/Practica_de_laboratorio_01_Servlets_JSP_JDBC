@@ -68,24 +68,24 @@ public class Login extends HttpServlet {
 		System.out.println(accion);
 		
 		if (accion.equals("login")) {
-			correo = request.getParameter("correo");
-			clave = request.getParameter("clave");
-			user = usuarioDao.buscar(correo, clave);
-			System.out.println("retorno de usuario: "+ usuarioDao.buscar(correo, clave));
-			System.out.println("Correo: " + correo + ", Clave: " + clave);
-			url="JSPs/Usuario.jsp";
 			try {
-				if (user != null) {
-					request.setAttribute("usuario", user);
-					request.getRequestDispatcher(url).forward(request, response);
-				} 
+				correo = request.getParameter("correo");
+				clave = request.getParameter("clave");
+				user = usuarioDao.buscar(correo, clave);
+				System.out.println("retorno de usuario: "+ usuarioDao.buscar(correo, clave));
+				System.out.println("Correo: " + correo + ", Clave: " + clave);
+				request.setAttribute("usuario", user);
+				url="JSPs/Usuario.jsp";
+					//request.getRequestDispatcher("JSPs/InicioSesion.jsp").forward(request, response);
 			} catch (Exception e) {
+				url="JSPs/InicioSesion.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
-		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../JSPs/InicioSesion.jsp");
-			dispatcher.forward(request, response);
-		}
+			request.getRequestDispatcher(url).forward(request, response);
+			
+		}/*else {
+			request.getRequestDispatcher("JSPs/InicioSesion.jsp").forward(request, response);
+		}*/
 	}
 
 	/**
