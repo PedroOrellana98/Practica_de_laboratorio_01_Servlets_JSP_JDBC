@@ -24,15 +24,26 @@ public class ContextJDBC {
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/mydb";
 	private static final String USER = "root";
-	private static final String PASS = "Patito.123";
+	private static final String PASS = "root";
 	private static ContextJDBC jdbc1 = null;
 	private static ContextJDBC jdbc2 = null;
+	private static ContextJDBC jdbc = null;
 	private Statement statement = null;
 
 	public ContextJDBC() {
 		this.connect();
 	}
 
+	
+	protected static ContextJDBC getJDBC(){
+		if(jdbc == null)
+			try {
+				jdbc = new ContextJDBC();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return jdbc;
+	}
 	/**
 	 * Método connect.
 	 * 
@@ -43,9 +54,9 @@ public class ContextJDBC {
 			Class.forName(DRIVER);
 			Connection connection = DriverManager.getConnection(URL, USER, PASS);
 			this.statement = connection.createStatement();
-		} catch (ClassNotFoundException e) {
-			System.out.println(">>>WARNING (JDBC:connect)...problemas con el driver\n" + e.getMessage());
 		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBC:connect)...problemas con el driver\n" + e.getMessage());
+		} catch (ClassNotFoundException e) {
 			System.out.println(">>>WARNING (JDBC:connect)...problemas con la BD\n" + e.getMessage());
 		}
 	}
@@ -91,10 +102,14 @@ public class ContextJDBC {
 		// creación de la conexión a la base de datos solo si no ha sido creada patrón
 		// de diseño singleton
 		if (jdbc1 == null) {
-			jdbc1 = new ContextJDBC();
+			try {
+				jdbc1 = new ContextJDBC();
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
 		}
 		return jdbc1;
-
 	}
 
 	/**
@@ -108,7 +123,12 @@ public class ContextJDBC {
 		// creación de la conexión a la base de datos solo si no ha sido creada patrón
 		// de diseño singleton
 		if (jdbc2 == null) {
-			jdbc2 = new ContextJDBC();
+			try {
+				jdbc2 = new ContextJDBC();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return jdbc2;
 

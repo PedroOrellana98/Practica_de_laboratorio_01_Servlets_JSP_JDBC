@@ -17,7 +17,7 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	@Override
 	public void create(Usuario usuario) {
 		// TODO Auto-generated method stub
-		conexionUno.update("INSERT usuario VALUES (" + usuario.getIdUsuario() + ", " + usuario.getNombre() + ", '" 
+		jdbc.update("INSERT usuario VALUES (" + usuario.getIdUsuario() + ", " + usuario.getNombre() + ", '" 
 		+ usuario.getApellido() + "', '" + usuario.getCorreo() + "', '" + usuario.getClave() + "', '" 
 		+ usuario.getRol() + "')");
 	}
@@ -27,10 +27,10 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		// TODO Auto-generated method stub
 		System.out.println("Entro a la base de datos");
 		Usuario user = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM usuario WHERE id=" + id);
+		ResultSet rs = jdbc.query("SELECT * FROM usuario WHERE id=" + id);
 		try {
 			if (rs != null && rs.next()) {
-				user = new Usuario(rs.getString("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
+				user = new Usuario(rs.getString("idUsuario"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
 			}
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBCUserDAO:read): " + e.getMessage());
@@ -42,15 +42,15 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	@Override
 	public void update(Usuario usuario) {
 		// TODO Auto-generated method stub
-		conexionUno.update("UPDATE usuario SET nombre = '" + usuario.getNombre() + "', apellido = '" + usuario.getClave()
+		jdbc.update("UPDATE usuario SET nombre = '" + usuario.getNombre() + "', apellido = '" + usuario.getClave()
 		+ "', correo= " + usuario.getCorreo() + "', clave= " + usuario.getClave()+ "', rol= " + usuario.getRol() 
-		+ " WHERE id = " + usuario.getIdUsuario());
+		+ " WHERE idUsuario = " + usuario.getIdUsuario());
 	}
 
 	@Override
 	public void delete(Usuario usuario) {
 		// TODO Auto-generated method stub
-		conexionUno.update("DELETE FROM usuario WHERE id = " + usuario.getIdUsuario());
+		jdbc.update("DELETE FROM usuario WHERE idUsuario = " + usuario.getIdUsuario());
 	}
 
 	@Override
@@ -67,11 +67,11 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		//System.out.println("Email: ------------- "+email.toString());
 		int i=0;
 		Usuario usuarioObject = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM usuario WHERE  correo=" +  "'" + correo + "'" + "AND clave=" +  "'" + clave + "'" );
+		ResultSet rs = jdbc.query("SELECT * FROM usuario WHERE  correo=" +  "'" + correo + "'" + "AND clave=" +  "'" + clave + "'" );
 		try {
 			if (rs != null && rs.next()) {
 				i=1;
-				usuarioObject = new Usuario (rs.getString("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
+				usuarioObject = new Usuario (rs.getString("idUsuario"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
 			}
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());

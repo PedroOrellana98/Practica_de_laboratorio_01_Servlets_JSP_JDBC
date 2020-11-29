@@ -8,7 +8,8 @@ protected static DAOFactory factory = new JDBCDAOFactory();
 		return factory;
 	}
 	
-	public abstract void createTables();
+	public void createTables() {
+	}
 	
 	public abstract UsuarioDAO getUsuarioDAO();
 	

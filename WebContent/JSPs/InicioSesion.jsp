@@ -18,7 +18,7 @@
       <a href="./Home.jsp" class="brand-logo">Home</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="./InicioSesion.jsp">Iniciar Sesión</a></li>
-        <li><a href="./RegistrarU.jsp">Registrarse</a></li>
+        <!--  <li><a href="/RegistrarU.jsp">Registrarse</a></li>-->
       </ul>
     </div>
   </nav>
@@ -38,7 +38,7 @@
       </div>
       <div class="col s4">
         <div class="row">
-    	<form class="col s12" action="../Login" method="POST">
+    	<form class="col s12" action="./Login" method="POST">
     		<div class="row">
         		<div class="input-field col s12">
           			<input id="email" name="correo" type="email">

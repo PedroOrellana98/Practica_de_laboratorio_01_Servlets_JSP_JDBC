@@ -8,14 +8,14 @@ import mysql.jdbc.JDBCRequerimientoDAO;
 
 public class JDBCDAOFactory extends DAOFactory {
 
-	public void createTables() {
+	/*public void createTables() {
 		this.getCategoriaDAO().createTable();
 		this.getUsuarioDAO().createTable();
 		this.getEmpresaDAO().createTable();
 		this.getProductoDAO().createTable();
 		this.getRequerimientoDAO().createTable();
 
-	}
+	}*/
 	
 	@Override
 	public UsuarioDAO getUsuarioDAO() {
