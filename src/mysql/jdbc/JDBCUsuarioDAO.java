@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.UsuarioDAO;
+import modelo.Categoria;
 import modelo.Empresa;
 import modelo.ListaRequerimientos;
 import modelo.Producto;
@@ -116,9 +117,7 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	    		+ "AND e.ID =" + idEmpresa);
 	    try {
 			while (rs.next()) {
-				System.out.println("Entro en el while");
 				Producto producto = new Producto(rs.getString("id"), rs.getString("nombre"));
-				System.out.println("IDs DE PRODUCTO:" + rs.getString("id") + ", NOMBRE DE PRODUCTO: " + rs.getString("nombre"));
 				list.add(producto);
 			}
 		} catch (SQLException e) {
@@ -127,23 +126,67 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		return list;
 	}
 	
-	@Override
-	public ListaRequerimientos listarRequisitos() {
-		// TODO Auto-generated method stub
+	public List<ListaRequerimientos> listarProductos0(){
+		List<ListaRequerimientos> list = new ArrayList<ListaRequerimientos>();
 		
-		ListaRequerimientos lrObject = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM ListaRequerimientos lr, Usuario u WHERE lr.Usuario_ID = u.ID AND u.correo = "
-				+ "" +  "'" + nuevoCorreo +  "'" +  " AND u.clave= " +  "'" + nuevoClave +  "'" );
-		
-		try {
-			if (rs != null && rs.next()) {
-				lrObject = new ListaRequerimientos(rs.getString("id"), rs.getString("estado"));
+		ResultSet rs = conexionUno.query("SELECT * FROM ListaRequerimientos lr,"
+				+ "Usuario u, Empresa e, Producto p "
+				+ "WHERE lr.Usuario_ID = u.ID "
+				+ "AND lr.ID = p.ListaRequerimientos_ID "
+				+ "AND e.ID = u.Empresa_ID "
+				+ "AND e.ID = " + idEmpresa);
+		 try {
+				while (rs.next()) {
+					ListaRequerimientos lr = new ListaRequerimientos(rs.getString("id"), rs.getString("estado"));
+					list.add(lr);
+				}
+			} catch (SQLException e) {
+				System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
 			}
-			
-		} catch (SQLException e) {
-			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
-		}
-		return lrObject;
+		return list;	
+	}
+	
+	public List<Producto> listarProductos1(){
+		
+		List<Producto> list = new ArrayList<Producto>();
+		
+		ResultSet rs = conexionUno.query("SELECT * FROM ListaRequerimientos lr,"
+				+ "Usuario u, Empresa e, Producto p "
+				+ "WHERE lr.Usuario_ID = u.ID "
+				+ "AND lr.ID = p.ListaRequerimientos_ID "
+				+ "AND e.ID = u.Empresa_ID "
+				+ "AND e.ID = " + idEmpresa);
+		 try {
+				while (rs.next()) {
+					Producto p = new Producto(rs.getString("id"), rs.getString("p.nombre"));
+					System.out.println("Producto:" + rs.getString("p.nombre"));
+					list.add(p);
+				}
+			} catch (SQLException e) {
+				System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
+			}
+		return list;	
+	}
+	
+	public List<Empresa> listarProductos2(){
+		List<Empresa> list = new ArrayList<Empresa>();
+		
+		ResultSet rs = conexionUno.query("SELECT * FROM ListaRequerimientos lr,"
+				+ "Usuario u, Empresa e, Producto p "
+				+ "WHERE lr.Usuario_ID = u.ID "
+				+ "AND lr.ID = p.ListaRequerimientos_ID "
+				+ "AND e.ID = u.Empresa_ID "
+				+ "AND e.ID = " + idEmpresa);
+		 try {
+				while (rs.next()) {
+					Empresa e = new Empresa(rs.getString("id"), rs.getString("e.nombre"));
+					System.out.println("Categoria: " + rs.getString("e.nombre"));
+					list.add(e);
+				}
+			} catch (SQLException e) {
+				System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
+			}
+		return list;	
 	}
 	
 
