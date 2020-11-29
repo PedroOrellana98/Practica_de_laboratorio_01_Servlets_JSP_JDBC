@@ -1,5 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +28,6 @@
   
 <div class="container">
 
-	
-	
-	
 	<h3>Inicie sesión</h3>
 	<h5>Ingrese su correo y su contraseña</h5>
 	
@@ -41,22 +41,21 @@
     	<form class="col s12" action="./Login" method="POST">
     		<div class="row">
         		<div class="input-field col s12">
-          			<input id="email" name="correo" type="email">
+          			<input id="email" type="email" name="correo">
           			<label for="email">Correo</label>
         		</div>
       		</div>
       		 <div class="row">
         		<div class="input-field col s12">
-          			<input id="password" name="clave" type="password">
+          			<input id="password" type="password" name="clave">
           			<label for="password">Contraseña</label>
         		</div>
       		</div>
       		<div class="center">
-    			<button class="btn waves-effect waves-light green" type="submit" name="action">Iniciar sesión</button>
-    		</div>
+    			<button class="btn waves-effect waves-light green" type="submit" name="action" value="login">Iniciar sesión</button>
+   			</div>
     	</form>
     </div>
-    
 	
 </div>
       </div>
@@ -93,7 +92,7 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2020 Copyright Text
+            © 2020, Universidad Politécnica Salesiana
             </div>
           </div>
 </footer>

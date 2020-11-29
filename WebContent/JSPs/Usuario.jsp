@@ -1,5 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,35 +28,30 @@
     </div>
   </nav>
   
-  <c:set var="t1" value="${requestScope['']}"/>
-  <c:set var="p2" value="${requestScope[''] }"/>
-  
 <div class="container">
 	<h3>Bienvenido</h3>
-  	<h4> ${ p2.nombre } ${p2.apellido }</h4>
 	
 	<table class="highlight centered">
-	<thead>
+	  <thead>
 		<tr>
-			<th>Producto</th>
-			<th>Categoria</th>
+			<th>Requerimiento</th>
 			<th>Estado</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="telf" items="${t1}">
+		<c:set var="req" scope="request" value="${requerimiento}"/>
 			<tr>	
-				<td>${telf.telf_id}</td>
-				<td>${telf.numero}</td>
-				<td>${telf.tipo}</td>
-				<td><a class="waves-effect waves-light btn red">Eliminar</a>
-				<a class="waves-effect waves-light btn yellow">Modificar</a></td>
+				<td>${req.idRequerimientos}</td>
+				<td>${req.estado}</td>
+				<td>
+				<form action="UsuarioControlador" method="POST">
+					<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalU" value="mostrar">Mostar info</button>
+				</form>
 			</tr>
-		</c:forEach>
 	</tbody>
 	</table>
-
+	
 </div>  
   	
 

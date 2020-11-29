@@ -4,6 +4,8 @@ import java.util.List;
 
 import dao.EmpresaDAO;
 import modelo.Empresa;
+import modelo.ListaRequerimientos;
+import modelo.Producto;
 import modelo.Usuario;
 
 public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, String> implements EmpresaDAO{
@@ -49,5 +51,18 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, String> implements E
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ListaRequerimientos listarRequisitos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Producto listarProductos(String codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

@@ -3,12 +3,10 @@ package mysql.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import dao.ProductoDAO;
-import modelo.Categoria;
+import modelo.ListaRequerimientos;
 import modelo.Producto;
 import modelo.Usuario;
 
@@ -22,19 +20,19 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 	@Override
 	public void create(Producto producto) {
 		// TODO Auto-generated method stub
-		jdbc1.update("INSERT producto VALUES (" + producto.getIdProducto() + ", " + producto.getNombre() + ")");
+		conexionDos.update("INSERT INTO Producto VALUES (" + producto.getIdProducto() + ", " + producto.getNombre() + ")");
 	}
 
 	@Override
 	public Producto read(String id) {
 		// TODO Auto-generated method stub
 		Producto producto = null;
-		ResultSet rsProduct = jdbc.query("SELECT * FROM producto WHERE id=" + id);
+		ResultSet rsProduct = conexionUno.query("SELECT * FROM Producto WHERE id=" + id);
 		try {
 			if (rsProduct != null && rsProduct.next()) {
 				producto = new Producto(rsProduct.getString("id"), rsProduct.getString("nombre"));
-				ResultSet rsCategoria = jdbc1
-						.query("SELECT * FROM categoria WHERE id=" + rsProduct.getString("categoria_id"));
+				//ResultSet rsCategoria = conexionDos
+						//.query("SELECT * FROM Categoria WHERE id=" + rsProduct.getString("categoria_id"));
 			}
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBCProductDAO:read): " + e.getMessage());
@@ -48,24 +46,24 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 	@Override
 	public void update(Producto producto) {
 		// TODO Auto-generated method stub
-		jdbc.update("UPDATE producto SET nombre = " + producto.getNombre() + "' WHERE id = " + producto.getIdProducto());
+		conexionUno.update("UPDATE Product SET nombre = " + producto.getNombre() + "' WHERE id = " + producto.getIdProducto());
 	}
 
 	@Override
 	public void delete(Producto producto) {
 		// TODO Auto-generated method stub
-		jdbc.update("DELETE FROM producto WHERE id = " + producto.getIdProducto());
+		conexionUno.update("DELETE FROM Producto WHERE id = " + producto.getIdProducto());
 	}
 
 	@Override
 	public List<Producto> find() {
 		// TODO Auto-generated method stub
 		List<Producto> list = new ArrayList<Producto>();
-		ResultSet rsProduct = jdbc.query("SELECT * FROM producto");
+		ResultSet rsProduct = conexionUno.query("SELECT * FROM Producto");
 		try {
 			while (rsProduct.next()) {
 				Producto producto = new Producto(rsProduct.getString("id"), rsProduct.getString("nombre"));
-				ResultSet rsCategoria = jdbc1.query("SELECT * FROM categoria WHERE id=" + rsProduct.getInt("categoria_id"));
+				//ResultSet rsCategoria = conexionDos.query("SELECT * FROM Categoria WHERE id=" + rsProduct.getInt("categoria_id"));
 				list.add(producto);
 			}
 
@@ -77,7 +75,19 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 	}
 
 	@Override
+	public Producto listarProductos(String codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public Usuario buscar(String correo, String clave) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ListaRequerimientos listarRequisitos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
