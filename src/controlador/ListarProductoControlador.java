@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,21 +13,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DAOFactory;
+import dao.RequerimientosDAO;
 import dao.UsuarioDAO;
-import modelo.Empresa;
-import modelo.Usuario;
+import modelo.ListaRequerimientos;
+import modelo.Producto;
+
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class Usuario
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/ListarProductoControlador")
+public class ListarProductoControlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public ListarProductoControlador() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,11 +42,19 @@ public class Login extends HttpServlet {
 	}
 
 	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
+
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
@@ -52,32 +64,24 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
-
-		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
-		String correo = "";
-		String clave = "";
 		String url = null;
+		
+		//RequerimientosDAO requerimientoDAO = DAOFactory.getFactory().getRequerimientoDAO();
+		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
 
-		Object accion = request.getParameter("action");
-		Usuario user = new Usuario();
-		Empresa emp = new Empresa();
+		Object mostrar = request.getParameter("mostrarPrincipalLista");
+		List<Producto> pr = new ArrayList<Producto>();
 		HttpSession sesion = request.getSession(true);
 
 		sesion.setAttribute("accesos", sesion.getId());
-		System.out.println("ID sesion: " + String.valueOf(sesion.getId()));
-		System.out.println(accion);
 		
-		if (accion.equals("login")) {
+		if (mostrar.equals("visualizar")) {
 			try {
-				correo = request.getParameter("correo");
-				clave = request.getParameter("clave");
-				user = usuarioDao.buscar(correo, clave);
-				request.setAttribute("usuario", user);
-				emp = usuarioDao.buscarEmpresa();
-				request.setAttribute("empresa", emp);
-				url="JSPs/Usuario.jsp";
+				pr = usuarioDao.listarProductos();
+				request.setAttribute("productos", pr);
+				url="JSPs/Listar.jsp";
 			} catch (Exception e) {
-				url="JSPs/InicioSesion.jsp";
+				url="JSPs/Listar.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 			request.getRequestDispatcher(url).forward(request, response);
@@ -89,6 +93,13 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
+	 */
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 

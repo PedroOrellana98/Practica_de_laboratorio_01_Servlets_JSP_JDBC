@@ -59,7 +59,13 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, String> implements E
 	}
 
 	@Override
-	public Producto listarProductos(String codigo) {
+	public List<Producto> listarProductos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Empresa buscarEmpresa() {
 		// TODO Auto-generated method stub
 		return null;
 	}

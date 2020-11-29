@@ -22,24 +22,22 @@
 	<table class="highlight centered">
 	  <thead>
 		<tr>
-			<th>Requerimiento</th>
-			<th>Estado</th>
-			<th>Acciones</th>
+			<th>ID</th>
+			<th>Nombre</th>
 		</tr>
 	</thead>
-	<tbody>
-		<c:set var="req" scope="request" value="${requerimiento}"/>
-			<tr>	
-				<td>${req.idRequerimientos}</td>
-				<td>${req.estado}</td>
-				<td>
-				<form action="UsuarioControlador" method="POST">
-					<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalU" value="mostrar">Mostar info</button>
-				</form>
-			</tr>
-	</tbody>
+		<tbody>
+			<form action="../ListarProductoControlador" method="POST">
+				<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalLista" value="visualizar">Mostar info</button>
+			</form>
+			<c:forEach var="pr" items="${productos}">
+				<tr>
+				<td>${pr.idProducto}</td>
+				<td>${pr.nombre}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
-	
 </div>  
   	
 
