@@ -1,9 +1,7 @@
 package controlador;
 
-import java.io.Console;
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -72,20 +70,15 @@ public class Login extends HttpServlet {
 				correo = request.getParameter("correo");
 				clave = request.getParameter("clave");
 				user = usuarioDao.buscar(correo, clave);
-				System.out.println("retorno de usuario: "+ usuarioDao.buscar(correo, clave));
-				System.out.println("Correo: " + correo + ", Clave: " + clave);
 				request.setAttribute("usuario", user);
 				url="JSPs/Usuario.jsp";
-					//request.getRequestDispatcher("JSPs/InicioSesion.jsp").forward(request, response);
 			} catch (Exception e) {
 				url="JSPs/InicioSesion.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 			request.getRequestDispatcher(url).forward(request, response);
 			
-		}/*else {
-			request.getRequestDispatcher("JSPs/InicioSesion.jsp").forward(request, response);
-		}*/
+		}
 	}
 
 	/**

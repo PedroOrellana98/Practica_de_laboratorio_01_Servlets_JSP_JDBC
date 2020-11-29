@@ -5,10 +5,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 import dao.UsuarioDAO;
+import modelo.ListaRequerimientos;
+import modelo.Producto;
 import modelo.Usuario;
 
 public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements UsuarioDAO{
 
+	private static String nuevoCorreo;
+	private static String nuevoClave;
 	@Override
 	public void createTable() {
 		// TODO Auto-generated method stub
@@ -63,19 +67,48 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	@Override
 	public Usuario buscar(String correo, String clave) {
 		// TODO Auto-generated method stub
-		
-		//System.out.println("Email: ------------- "+email.toString());
 		Usuario usuarioObject = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM usuario WHERE  correo=" +  "'" + correo + "'" + "AND clave=" +  "'" + clave + "'" );
+		ResultSet rs = conexionUno.query("SELECT * FROM usuario WHERE correo=" +  "'" + correo + "'" + "AND clave=" +  "'" + clave + "'" );
+		nuevoCorreo = correo;
+		nuevoClave = clave;
+		System.err.println(nuevoCorreo);
 		try {
 			if (rs != null && rs.next()) {
 				usuarioObject = new Usuario (rs.getString("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
-			}
+				
+			}	
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
 		}
 		return usuarioObject;
 	}
+	
+	@Override
+	public Producto listarProductos(String codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public ListaRequerimientos listarRequisitos() {
+		// TODO Auto-generated method stub
+		
+		ListaRequerimientos lrObject = null;
+		
+		ResultSet rs = conexionUno.query("SELECT * FROM ListaRequerimientos lr, Usuario u WHERE lr.Usuario_ID = u.ID AND u.correo = "
+				+ "" +  "'" + nuevoCorreo +  "'" +  " AND u.clave= " +  "'" + nuevoClave +  "'" );
+		
+		try {
+			if (rs != null && rs.next()) {
+				lrObject = new ListaRequerimientos(rs.getString("id"), rs.getString("estado"));
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
+		}
+		return lrObject;
+	}
+	
 	
 
 }

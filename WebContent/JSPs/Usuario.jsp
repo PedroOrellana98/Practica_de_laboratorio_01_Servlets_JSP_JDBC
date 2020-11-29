@@ -34,20 +34,20 @@
 	<table class="highlight centered">
 	  <thead>
 		<tr>
-			<th>Producto</th>
-			<th>Categoria</th>
+			<th>Requerimiento</th>
 			<th>Estado</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:set var="usu" scope="request" value="${usuario}"/>
+		<c:set var="req" scope="request" value="${requerimiento}"/>
 			<tr>	
-				<td>${usu.idUsuario}</td>
-				<td>${usu.nombre}</td>
-				<td>${usu.apellido}</td>
-				<td><a class="waves-effect waves-light btn red">Eliminar</a>
-				<a class="waves-effect waves-light btn yellow">Modificar</a></td>
+				<td>${req.idRequerimientos}</td>
+				<td>${req.estado}</td>
+				<td>
+				<form action="UsuarioControlador" method="POST">
+					<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalU" value="mostrar">Mostar info</button>
+				</form>
 			</tr>
 	</tbody>
 	</table>
