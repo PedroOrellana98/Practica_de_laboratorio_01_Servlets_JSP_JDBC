@@ -81,11 +81,6 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 		return null;
 	}
 
-	@Override
-	public ListaRequerimientos listarRequisitos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<Producto> listarProductos() {
@@ -95,6 +90,12 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 
 	@Override
 	public Empresa buscarEmpresa() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ListaRequerimientos> listarRequerimientos() {
 		// TODO Auto-generated method stub
 		return null;
 	}

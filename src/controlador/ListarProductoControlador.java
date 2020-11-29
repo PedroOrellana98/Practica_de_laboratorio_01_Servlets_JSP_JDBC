@@ -68,7 +68,6 @@ public class ListarProductoControlador extends HttpServlet {
 		
 		//RequerimientosDAO requerimientoDAO = DAOFactory.getFactory().getRequerimientoDAO();
 		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
-
 		Object mostrar = request.getParameter("mostrarPrincipalLista");
 		List<Producto> pr = new ArrayList<Producto>();
 		HttpSession sesion = request.getSession(true);

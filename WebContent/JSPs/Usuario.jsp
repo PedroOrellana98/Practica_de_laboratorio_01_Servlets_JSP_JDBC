@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<!-- Materialize CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <title>Home Usuario</title>
@@ -34,21 +33,26 @@
 	<table class="highlight centered">
 	  <thead>
 		<tr>
-			<th>Requerimiento</th>
+			<th>ID Requerimiento</th>
+			<th>Producto</th>
+			<th>Empresa</th>
 			<th>Estado</th>
-			<th>Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:set var="req" scope="request" value="${requerimiento}"/>
-			<tr>	
-				<td>${req.idRequerimientos}</td>
-				<td>${req.estado}</td>
-				<td>
+		
+		<c:forEach var="re" items="${requerimientos}" varStatus="loop">
+		<tr>
+			<td>${re.idRequerimientos}</td>
+            <td>${productos[loop.index].nombre}</td>
+            <td>${empresas[loop.index].nombre}</td>
+            <td>${re.estado}</td>
+         </tr>
+		</c:forEach>
+		
 				<form action="UsuarioControlador" method="POST">
 					<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalU" value="mostrar">Mostar info</button>
 				</form>
-			</tr>
 	</tbody>
 	</table>
 	

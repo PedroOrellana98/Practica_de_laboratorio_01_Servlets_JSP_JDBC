@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<!-- Materialize CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <title>Home Usuario</title>

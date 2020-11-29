@@ -1,6 +1,9 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DAOFactory;
-import dao.RequerimientosDAO;
 import dao.UsuarioDAO;
+import modelo.Empresa;
 import modelo.ListaRequerimientos;
+import modelo.Producto;
 
 
 /**
@@ -66,24 +70,28 @@ public class UsuarioControlador extends HttpServlet {
 		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
 
 		Object mostrar = request.getParameter("mostrarPrincipalU");
-		ListaRequerimientos req = new ListaRequerimientos();
+		List<ListaRequerimientos> req = new ArrayList<ListaRequerimientos>();
+		List<Producto> pr = new ArrayList<Producto>();
+		List<Empresa> em = new ArrayList<Empresa>();
 		HttpSession sesion = request.getSession(true);
 
 		sesion.setAttribute("accesos", sesion.getId());
 		System.out.println("ID sesion Usuario: " + String.valueOf(sesion.getId()));
-		System.out.println(mostrar);
 		
 		if (mostrar.equals("mostrar")) {
 			try {
-				req = usuarioDao.listarRequisitos();
-				request.setAttribute("requerimiento", req);
+				req = usuarioDao.listarProductos0();
+				pr = usuarioDao.listarProductos1();
+				em = usuarioDao.listarProductos2();
+				request.setAttribute("requerimientos", req);
+				request.setAttribute("productos", pr);
+				request.setAttribute("empresas", em);
 				url="JSPs/Usuario.jsp";
 			} catch (Exception e) {
 				url="JSPs/Usuario.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 			request.getRequestDispatcher(url).forward(request, response);
-			
 		}
 	}
 

@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import modelo.Categoria;
 import modelo.Empresa;
 import modelo.ListaRequerimientos;
 import modelo.Producto;
@@ -23,10 +24,14 @@ public interface GenericDAO<T, ID> {
 	
 	Usuario buscar(String correo, String clave);
 
-	ListaRequerimientos listarRequisitos();
-
 	List<Producto> listarProductos();
 
 	Empresa buscarEmpresa();
+	
+	List<ListaRequerimientos> listarProductos0();
+	
+	List<Producto> listarProductos1();
+	
+	List<Empresa> listarProductos2();
 
 }
