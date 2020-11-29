@@ -3,12 +3,10 @@ package mysql.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import dao.ProductoDAO;
-import modelo.Categoria;
+import modelo.ListaRequerimientos;
 import modelo.Producto;
 import modelo.Usuario;
 
@@ -33,8 +31,8 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 		try {
 			if (rsProduct != null && rsProduct.next()) {
 				producto = new Producto(rsProduct.getString("id"), rsProduct.getString("nombre"));
-				ResultSet rsCategoria = conexionDos
-						.query("SELECT * FROM Categoria WHERE id=" + rsProduct.getString("categoria_id"));
+				//ResultSet rsCategoria = conexionDos
+						//.query("SELECT * FROM Categoria WHERE id=" + rsProduct.getString("categoria_id"));
 			}
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBCProductDAO:read): " + e.getMessage());
@@ -65,7 +63,7 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 		try {
 			while (rsProduct.next()) {
 				Producto producto = new Producto(rsProduct.getString("id"), rsProduct.getString("nombre"));
-				ResultSet rsCategoria = conexionDos.query("SELECT * FROM Categoria WHERE id=" + rsProduct.getInt("categoria_id"));
+				//ResultSet rsCategoria = conexionDos.query("SELECT * FROM Categoria WHERE id=" + rsProduct.getInt("categoria_id"));
 				list.add(producto);
 			}
 
@@ -77,7 +75,19 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 	}
 
 	@Override
+	public Producto listarProductos(String codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public Usuario buscar(String correo, String clave) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ListaRequerimientos listarRequisitos() {
 		// TODO Auto-generated method stub
 		return null;
 	}

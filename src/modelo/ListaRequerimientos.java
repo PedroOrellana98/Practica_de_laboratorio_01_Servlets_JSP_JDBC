@@ -6,17 +6,15 @@ public class ListaRequerimientos implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private String idRequerimientos;
-	private String nombre;
 	private String estado;
-	
+
 	public ListaRequerimientos() {
 		
 	}
 	
-	public ListaRequerimientos(String idRequerimientos, String nombre, String estado) {
+	public ListaRequerimientos(String idRequerimientos, String estado) {
 		super();
 		this.idRequerimientos = idRequerimientos;
-		this.nombre = nombre;
 		this.estado = estado;
 	}
 
@@ -26,14 +24,6 @@ public class ListaRequerimientos implements Serializable{
 
 	public void setIdRequerimientos(String idRequerimientos) {
 		this.idRequerimientos = idRequerimientos;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 
 	public String getEstado() {
@@ -47,6 +37,5 @@ public class ListaRequerimientos implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 	
 }
