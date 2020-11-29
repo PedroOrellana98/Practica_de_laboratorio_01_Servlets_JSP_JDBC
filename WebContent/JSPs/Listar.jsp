@@ -15,21 +15,9 @@
 <body>
 <!-- Materialize SCRIPT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-  <nav class="cyan darken-2">
-    <div class="nav-wrapper container">
-      <a href="./Usuario.jsp" class="brand-logo">Usuario</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-      	<li><a href="./Registrar.jsp">Agregar</a></li>
-        <li><a href="./Buscar.jsp">Buscar</a></li>
-        <li><a href="JSPs/Listar.jsp">Listar</a></li>
-        <li><a href="./Home.jsp">Salir</a></li>
-      </ul>
-    </div>
-  </nav>
   
 <div class="container">
-	<h3>Bienvenido</h3>
+	<h3>Lista de Productos</h3>
 	
 	<table class="highlight centered">
 	  <thead>
