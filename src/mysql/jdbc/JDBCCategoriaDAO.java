@@ -7,6 +7,7 @@ import java.util.List;
 
 import dao.CategoriaDAO;
 import modelo.Categoria;
+import modelo.Empresa;
 import modelo.ListaRequerimientos;
 import modelo.Producto;
 import modelo.Usuario;
@@ -79,7 +80,13 @@ public class JDBCCategoriaDAO extends JDBCGenericDAO<Categoria, String> implemen
 	}
 
 	@Override
-	public Producto listarProductos(String codigo) {
+	public List<Producto> listarProductos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Empresa buscarEmpresa() {
 		// TODO Auto-generated method stub
 		return null;
 	}

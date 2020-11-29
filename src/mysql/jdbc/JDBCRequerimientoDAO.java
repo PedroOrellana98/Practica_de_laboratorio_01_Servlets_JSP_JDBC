@@ -1,10 +1,9 @@
 package mysql.jdbc;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import dao.RequerimientosDAO;
+import modelo.Empresa;
 import modelo.ListaRequerimientos;
 import modelo.Producto;
 import modelo.Usuario;
@@ -53,14 +52,21 @@ public class JDBCRequerimientoDAO extends JDBCGenericDAO<ListaRequerimientos, St
 		return null;
 	}
 	
+
 	@Override
-	public Producto listarProductos(String codigo) {
+	public ListaRequerimientos listarRequisitos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ListaRequerimientos listarRequisitos() {
+	public List<Producto> listarProductos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Empresa buscarEmpresa() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ProductoDAO;
+import modelo.Empresa;
 import modelo.ListaRequerimientos;
 import modelo.Producto;
 import modelo.Usuario;
@@ -75,12 +76,6 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 	}
 
 	@Override
-	public Producto listarProductos(String codigo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Usuario buscar(String correo, String clave) {
 		// TODO Auto-generated method stub
 		return null;
@@ -88,6 +83,18 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 
 	@Override
 	public ListaRequerimientos listarRequisitos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Producto> listarProductos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Empresa buscarEmpresa() {
 		// TODO Auto-generated method stub
 		return null;
 	}
