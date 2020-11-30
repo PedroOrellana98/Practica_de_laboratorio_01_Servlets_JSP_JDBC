@@ -64,11 +64,5 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, String> implements E
 		return null;
 	}
 
-	@Override
-	public List<ListaRequerimientos> listarRequerimientos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }

@@ -9,62 +9,46 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<title>Iniciar Sesión</title>
+<title>Buscar</title>
 </head>
 <body>
 <!-- Materialize SCRIPT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-  <nav class="light-blue darken-2">
-    <div class="nav-wrapper container">
-      <a href="../index.html" class="brand-logo">Home</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-      </ul>
-    </div>
-  </nav>
   
 <div class="container">
-
-	<h3>Inicie sesión</h3>
-	<h5>Ingrese su correo y su contraseña</h5>
-	
-	<div class="row">
-
-      <div class="col s4">
-      </div>
-      <div class="col s4">
-        <div class="row">
-    	<form class="col s12" action="../Login" method="POST">
-    		<div class="row">
+	<h3>Buscar Productos</h3>
+		<form action="../BuscarControlador" method="POST">
+			<div class="row">
         		<div class="input-field col s12">
-          			<input id="email" type="email" name="correo">
-          			<label for="email">Correo</label>
+          			<input id="busqueda" type="text" name="buscar">
+          			<label for="password">Introduza el criterio de busqueda</label>
+          			<button class="btn waves-effect waves-light green" type="submit" name="botonBuscar" value="buscar">BUSCAR</button>
         		</div>
       		</div>
-      		 <div class="row">
-        		<div class="input-field col s12">
-          			<input id="password" type="password" name="clave">
-          			<label for="password">Contraseña</label>
-        		</div>
-      		</div>
-      		<div class="center">
-    			<button class="btn waves-effect waves-light green" type="submit" name="action" value="login">Iniciar sesión</button>
-   			</div>
-    	</form>
-    </div>
-	
-</div>
-      </div>
-      <div class="col s4">
-        <!-- Promo Content 3 goes here -->
-      </div>
+		</form>
+	<table class="highlight centered">
+	  <thead>
+		<tr>
+			<th>ID</th>
+			<th>Producto</th>
+			<th>Categoria<th>
+		</tr>
+	</thead>
+		<tbody>
+			<c:forEach var="pr" items="${productos}" varStatus="loop">
+				<tr>
+				<td>${pr.idProducto}</td>
+				<td>${pr.nombre}</td>
+				<td>${categorias[loop.index].nombre}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>  
+  	
 
-    </div>
-
-  <br>
 </body>
-
-<footer class="page-footer blue darken-4">
+<footer class="page-footer cyan darken-4">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -88,7 +72,7 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2020, Universidad Politécnica Salesiana
+            © 2020 Copyright Text
             </div>
           </div>
 </footer>
