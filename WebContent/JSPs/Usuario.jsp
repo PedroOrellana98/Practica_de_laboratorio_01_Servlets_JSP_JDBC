@@ -20,7 +20,7 @@
       <a href="./Usuario.jsp" class="brand-logo">Usuario</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       	<li><a href="./Registrar.jsp">Agregar</a></li>
-        <li><a href="./Buscar.jsp">Buscar</a></li>
+        <li><a href="JSPs/Buscar.jsp">Buscar</a></li>
         <li><a href="JSPs/Listar.jsp">Listar</a></li>
         <li><a href="./Home.jsp">Salir</a></li>
       </ul>

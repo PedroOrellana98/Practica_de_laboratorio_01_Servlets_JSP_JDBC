@@ -33,5 +33,9 @@ public interface GenericDAO<T, ID> {
 	List<Producto> listarProductos1();
 	
 	List<Empresa> listarProductos2();
+	
+	List<Producto> buscarProductos0(String buscar);
+	
+	List<Categoria> buscarProductos1(String buscar);
 
 }

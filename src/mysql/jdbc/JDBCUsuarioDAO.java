@@ -18,6 +18,7 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	private static String nuevoClave;
 	private static String id;
 	private static String idEmpresa;
+	
 	@Override
 	public void createTable() {
 		// TODO Auto-generated method stub
@@ -189,5 +190,49 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		return list;	
 	}
 	
-
+	public List<Producto> buscarProductos0(String buscar){
+		List<Producto> list = new ArrayList<Producto>();
+		
+		ResultSet rs = conexionUno.query("SELECT * FROM ListaRequerimientos lr,"
+				+ "Usuario u, Empresa e, Producto p, Categoria c "
+				+ "WHERE lr.Usuario_ID = u.ID "
+				+ "AND lr.ID = p.ListaRequerimientos_ID "
+				+ "AND e.ID = u.Empresa_ID "
+				+ "AND p.Categoria_ID = c.ID "
+				+ "AND e.ID = " + idEmpresa
+				+ " AND p.nombre = " + "'" + buscar + "'");
+		 try {
+				while (rs.next()) {
+					Producto pr = new Producto(rs.getString("p.id"), rs.getString("p.nombre"));
+					System.out.println(rs.getString("p.nombre"));
+					list.add(pr);
+				}
+			} catch (SQLException e) {
+				System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
+			}
+		return list;	
+	}
+	
+	public List<Categoria> buscarProductos1(String buscar){
+		List<Categoria> list = new ArrayList<Categoria>();
+		
+		ResultSet rs = conexionUno.query("SELECT * FROM ListaRequerimientos lr,"
+				+ "Usuario u, Empresa e, Producto p, Categoria c "
+				+ "WHERE lr.Usuario_ID = u.ID "
+				+ "AND lr.ID = p.ListaRequerimientos_ID "
+				+ "AND e.ID = u.Empresa_ID "
+				+ "AND p.Categoria_ID = c.ID "
+				+ "AND e.ID = " + idEmpresa
+				+ " AND p.nombre = " + "'" + buscar + "'");
+		 try {
+				while (rs.next()) {
+					Categoria c = new Categoria(rs.getString("c.id"), rs.getString("c.nombre"));
+					System.out.println(rs.getString("c.nombre"));
+					list.add(c);
+				}
+			} catch (SQLException e) {
+				System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
+			}
+		return list;	
+	}
 }
