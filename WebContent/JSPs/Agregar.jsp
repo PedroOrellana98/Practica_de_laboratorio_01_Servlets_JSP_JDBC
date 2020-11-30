@@ -9,7 +9,7 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<title>Buscar</title>
+<title>Registrar</title>
 </head>
 <body>
 <!-- Materialize SCRIPT -->
@@ -24,33 +24,15 @@
   </nav>
   
 <div class="container">
-	<h3>Buscar Productos</h3>
-		<form action="../BuscarControlador" method="POST">
+	<h3>Registar Productos</h3>
+		<form action="../registrarControlador" method="POST">
 			<div class="row">
         		<div class="input-field col s12">
-          			<input id="busqueda" type="text" name="buscar">
-          			<button class="btn waves-effect waves-light green" type="submit" name="botonBuscar" value="buscar">BUSCAR</button>
+          			<input id="busqueda" type="text" name="producto">
+          			<button class="btn waves-effect waves-light green" type="submit" name="botonRegistrar" value="registrar">REGISTRAR PRODUCTO</button>
         		</div>
       		</div>
 		</form>
-	<table class="highlight centered">
-	  <thead>
-		<tr>
-			<th>ID</th>
-			<th>Producto</th>
-			<th>Categoria<th>
-		</tr>
-	</thead>
-		<tbody>
-			<c:forEach var="pr" items="${productos}" varStatus="loop">
-				<tr>
-				<td>${pr.idProducto}</td>
-				<td>${pr.nombre}</td>
-				<td>${categorias[loop.index].nombre}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
 </div>  
   	
 

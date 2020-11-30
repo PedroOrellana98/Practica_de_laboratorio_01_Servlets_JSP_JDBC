@@ -38,4 +38,6 @@ public interface GenericDAO<T, ID> {
 	
 	List<Categoria> buscarProductos1(String buscar);
 
+	void actualizarRequerimiento(String producto);
+
 }

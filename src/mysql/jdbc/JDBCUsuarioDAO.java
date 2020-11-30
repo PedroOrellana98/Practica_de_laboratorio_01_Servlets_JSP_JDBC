@@ -235,4 +235,15 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 			}
 		return list;	
 	}
+	
+	@Override
+	public void actualizarRequerimiento(String producto) {
+		// TODO Auto-generated method stub
+		conexionUno.update("UPDATE ListaRequerimientos lr, Usuario u, Empresa e, Producto p SET lr.estado = 'E' "
+				+ "WHERE lr.Usuario_ID = u.ID AND u.Empresa_ID = e.ID "
+				+ "AND p.ListaRequerimientos_ID = lr.ID "
+				+ "AND p.nombre = '" + producto + "' "
+				+ "AND e.ID = " + idEmpresa
+				+ " AND u.correo = '" + nuevoCorreo + "' ");
+	}
 }
