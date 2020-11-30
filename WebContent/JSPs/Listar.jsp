@@ -9,11 +9,19 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<title>Home Usuario</title>
+<title>Listar</title>
 </head>
 <body>
 <!-- Materialize SCRIPT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<nav class="cyan darken-2">
+    <div class="nav-wrapper container">
+      <a href="JSPs/Usuario.jsp" class="brand-logo">Usuario</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      </ul>
+    </div>
+  </nav>
   
 <div class="container">
 	<h3>Lista de Productos</h3>

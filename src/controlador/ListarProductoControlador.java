@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DAOFactory;
-import dao.RequerimientosDAO;
 import dao.UsuarioDAO;
-import modelo.ListaRequerimientos;
 import modelo.Producto;
 
 
