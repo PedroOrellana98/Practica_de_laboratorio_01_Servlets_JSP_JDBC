@@ -12,21 +12,18 @@ import javax.servlet.http.HttpSession;
 
 import dao.DAOFactory;
 import dao.UsuarioDAO;
-import modelo.Empresa;
-import modelo.Usuario;
-import mysql.jdbc.JDBCUsuarioDAO;
 
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/registrarAdministrador")
+public class registrarAdministrador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public registrarAdministrador() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -55,45 +52,31 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html:charset=UTF-8");
 
 		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
-		String correo = "";
-		String clave = "";
+		String producto = "";
+		String nombre = "";
 		String url = null;
-
-		Object accion = request.getParameter("action");
-		Usuario user = new Usuario();
-		Empresa emp = new Empresa();
+		//producto es el textfield de ingreso
+		
+		//accion es el name del boton
+		Object accion = request.getParameter("botonRegistrar");
 		HttpSession sesion = request.getSession(true);
 
 		sesion.setAttribute("accesos", sesion.getId());
 		System.out.println("ID sesion: " + String.valueOf(sesion.getId()));
-		System.out.println(accion);	
+		System.out.println(accion);
 		
-		if (accion.equals("login")) {
+		//registar es el value del boton
+		if (accion.equals("registrar")) {
 			try {
-				correo = request.getParameter("correo");
-				clave = request.getParameter("clave");
-				user = usuarioDao.buscar(correo, clave);
-				request.setAttribute("usuario", user);
-				emp = usuarioDao.buscarEmpresa();
-				request.setAttribute("empresa", emp);
-				JDBCUsuarioDAO nuevo = new JDBCUsuarioDAO();
-				if (Integer.parseInt(nuevo.idEmpresa) == 2) {
-					url="JSPs/Admin.jsp";
-					System.out.println(url);
-					request.getRequestDispatcher(url).forward(request, response);
-				}else{
-					url="JSPs/Usuario.jsp";
-					System.out.println(url);
-					request.getRequestDispatcher(url).forward(request, response);
-				}
+				producto = request.getParameter("producto");
+				nombre = request.getParameter("nombre");
+				usuarioDao.actualizarProducto(nombre, producto);
 				url="JSPs/Admin.jsp";
 			} catch (Exception e) {
 				url="JSPs/InicioSesion.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
-			
-			
-			
+			request.getRequestDispatcher(url).forward(request, response);
 		}
 	}
 

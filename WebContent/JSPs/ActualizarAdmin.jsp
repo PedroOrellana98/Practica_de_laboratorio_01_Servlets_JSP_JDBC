@@ -9,54 +9,31 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<title>Home Administrador</title>
+<title>Actualizar</title>
 </head>
 <body>
+<!-- Materialize SCRIPT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <nav class="cyan darken-2">
+<nav class="cyan darken-2">
     <div class="nav-wrapper container">
-      <a href="./Usuario.jsp" class="brand-logo">Administrador</a>
+      <a href="JSPs/Admin.jsp" class="brand-logo">Administrador</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      	<li><a href="JSPs/AgregarAdmin.jsp">Agregar</a></li>
-      	<li><a href="JSPs/ActualizarAdmin.jsp">Actualizar</a></li>
-        <li><a href="JSPs/Buscar.jsp">Buscar</a></li>
-        <li><a href="JSPs/Listar.jsp">Listar</a></li>
-        <li><a href="JSPs/EliminarAdmin.jsp">Eliminar</a></li>
-        <li><a href="JSPs/InicioSesion.jsp">Salir</a></li>
       </ul>
     </div>
   </nav>
   
 <div class="container">
-	<h3>Bienvenido</h3>
-	
-	<table class="highlight centered">
-	  <thead>
-		<tr>
-			<th>ID Requerimiento</th>
-			<th>Producto</th>
-			<th>Empresa</th>
-			<th>Estado</th>
-		</tr>
-	</thead>
-	<tbody>
-		
-		<c:forEach var="re" items="${requerimientos}" varStatus="loop">
-		<tr>
-			<td>${re.idRequerimientos}</td>
-            <td>${productos[loop.index].nombre}</td>
-            <td>${empresas[loop.index].nombre}</td>
-            <td>${re.estado}</td>
-         </tr>
-		</c:forEach>
-		
-				<form action="UsuarioControlador" method="POST">
-					<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalU" value="mostrar">Mostar info</button>
-				</form>
-	</tbody>
-	</table>
-	
+	<h3>Actualizar Productros</h3>
+		<form action="../registrarAdministrador" method="POST">
+			<div class="row">
+        		<label for="fname">Nombre del producto nuevo:</label><br>
+        			<input class="busqueda" type="text" name="nombre">
+        		<label for="fname">Nombre del producto que desea actualizar:</label><br>
+          			<input class="busqueda" type="text" name="producto">
+          			<button class="btn waves-effect waves-light green" type="submit" name="botonRegistrar" value="registrar">ACTUALIZAR PRODUCTO</button>
+      		</div>
+		</form>
 </div>  
   	
 

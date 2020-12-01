@@ -14,10 +14,10 @@ import modelo.Usuario;
 
 public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements UsuarioDAO{
 
-	private static String nuevoCorreo;
-	private static String nuevoClave;
-	private static String id;
-	private static String idEmpresa;
+	public static String nuevoCorreo;
+	public static String nuevoClave;
+	public static String id;
+	public static String idEmpresa;
 	
 	@Override
 	public void createTable() {
@@ -246,4 +246,18 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 				+ "AND e.ID = " + idEmpresa
 				+ " AND u.correo = '" + nuevoCorreo + "' ");
 	}
+	
+	@Override
+	public void actualizarProducto(String nombre, String producto) {
+		// TODO Auto-generated method stub
+		conexionUno.update("UPDATE ListaRequerimientos lr, Usuario u, Empresa e, Producto p SET p.nombre ="
+				+ " '" + nombre + "' "
+				+ "WHERE lr.Usuario_ID = u.ID AND u.Empresa_ID = e.ID "
+				+ "AND p.ListaRequerimientos_ID = lr.ID "
+				+ "AND p.nombre = '" + producto + "' "
+				+ "AND e.ID = " + idEmpresa
+				+ " AND u.correo = '" + nuevoCorreo + "' ");
+	}
+	
+	
 }

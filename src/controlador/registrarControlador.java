@@ -12,8 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.DAOFactory;
 import dao.UsuarioDAO;
-import modelo.Empresa;
-import modelo.Usuario;
 
 /**
  * Servlet implementation class Login
