@@ -40,4 +40,6 @@ public interface GenericDAO<T, ID> {
 
 	void actualizarRequerimiento(String producto);
 
+	void actualizarProducto(String nombre, String producto);
+
 }
