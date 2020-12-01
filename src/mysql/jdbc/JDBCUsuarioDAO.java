@@ -18,6 +18,7 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	public static String nuevoClave;
 	public static String id;
 	public static String idEmpresa;
+	public static String rol;
 	
 	@Override
 	public void createTable() {
@@ -98,7 +99,8 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		try {
 			if (rs != null && rs.next()) {
 				id = rs.getString("id");
-				usuarioObject = new Usuario (id, rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
+				rol = rs.getString("rol");
+				usuarioObject = new Usuario (id, rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rol);
 			}	
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
@@ -106,6 +108,23 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		return usuarioObject;
 	}
 	
+	/*@Override
+	public Usuario buscarRol() {
+		
+		Usuario usuarioObject = null;
+		ResultSet rs = conexionUno.query("SELECT * FROM usuario WHERE correo=" +  "'" + nuevoCorreo  + "'" + "AND clave=" +  "'" + nuevoClave + "'" );
+
+		try {
+			if (rs != null && rs.next()) {
+				rol = rs.getString("rol");
+				usuarioObject = new Usuario (id, rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
+			}	
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
+		}
+		return usuarioObject;
+	}
+	*/
 	@Override
 	public List<Producto> listarProductos() {
 		// TODO Auto-generated method stub

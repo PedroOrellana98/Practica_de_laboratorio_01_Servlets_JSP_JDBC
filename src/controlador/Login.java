@@ -75,15 +75,15 @@ public class Login extends HttpServlet {
 				user = usuarioDao.buscar(correo, clave);
 				request.setAttribute("usuario", user);
 				emp = usuarioDao.buscarEmpresa();
-				request.setAttribute("empresa", emp);
+
 				JDBCUsuarioDAO nuevo = new JDBCUsuarioDAO();
-				if (Integer.parseInt(nuevo.idEmpresa) == 2) {
+				if (nuevo.rol.equals("A")) {
 					url="JSPs/Admin.jsp";
-					System.out.println(url);
+					System.out.println("entró admin");
 					request.getRequestDispatcher(url).forward(request, response);
-				}else{
+				}else if(nuevo.rol.equals("U")){
 					url="JSPs/Usuario.jsp";
-					System.out.println(url);
+					System.out.println("Entró usr");
 					request.getRequestDispatcher(url).forward(request, response);
 				}
 				url="JSPs/Admin.jsp";
