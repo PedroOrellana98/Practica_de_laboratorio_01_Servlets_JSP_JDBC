@@ -41,6 +41,20 @@ public class registrarAdministrador extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html:charset=UTF-8");
+		String url = null;
+		
+		HttpSession sesion = request.getSession(true);
+
+		sesion.setAttribute("accesos", sesion.getId());
+		
+			try {
+				url="JSPs/ActualizarAdmin.jsp";
+			} catch (Exception e) {
+				url="JSPs/InicioSesion.jsp";
+				System.out.println("Error en el login: " + e.getMessage());
+			}
+			request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	/**

@@ -17,7 +17,9 @@
 
 <nav class="cyan darken-2">
     <div class="nav-wrapper container">
-      <a href="JSPs/Admin.jsp" class="brand-logo">Administrador</a>
+      <form action="Login" method="GET">
+				<a href="Login">Administrador</a>
+		</form>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       </ul>
     </div>

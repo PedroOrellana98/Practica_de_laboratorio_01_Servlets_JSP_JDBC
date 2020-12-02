@@ -17,6 +17,7 @@ import dao.UsuarioDAO;
 import modelo.Empresa;
 import modelo.ListaRequerimientos;
 import modelo.Producto;
+import mysql.jdbc.JDBCUsuarioDAO;
 
 
 /**
@@ -86,9 +87,14 @@ public class UsuarioControlador extends HttpServlet {
 				request.setAttribute("requerimientos", req);
 				request.setAttribute("productos", pr);
 				request.setAttribute("empresas", em);
-				url="JSPs/Usuario.jsp";
+				JDBCUsuarioDAO nuevo = new JDBCUsuarioDAO();
+				if (nuevo.rol.equals("A")) {
+					url="JSPs/Admin.jsp";
+				}else if(nuevo.rol.equals("U")){
+					url="JSPs/Usuario.jsp";
+				}
 			} catch (Exception e) {
-				url="JSPs/Usuario.jsp";
+				url="JSPs/InicioSesion.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 			request.getRequestDispatcher(url).forward(request, response);

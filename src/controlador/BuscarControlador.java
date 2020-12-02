@@ -16,6 +16,7 @@ import dao.DAOFactory;
 import dao.UsuarioDAO;
 import modelo.Categoria;
 import modelo.Producto;
+import mysql.jdbc.JDBCUsuarioDAO;
 
 /**
  * Servlet implementation class Login
@@ -45,6 +46,26 @@ public class BuscarControlador extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html:charset=UTF-8");
+
+		String url = null;
+
+		HttpSession sesion = request.getSession(true);
+
+		sesion.setAttribute("accesos", sesion.getId());
+
+			try {
+				JDBCUsuarioDAO nuevo = new JDBCUsuarioDAO();
+				if (nuevo.rol.equals("A")) {
+					url="JSPs/BuscarAdmin.jsp";
+				}else if(nuevo.rol.equals("U")){
+					url="JSPs/Buscar.jsp";
+				}
+			} catch (Exception e) {
+				url="JSPs/Buscar.jsp";
+				System.out.println("Error en el login: " + e.getMessage());
+			}
+			request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	/**
@@ -74,7 +95,12 @@ public class BuscarControlador extends HttpServlet {
 				request.setAttribute("productos", pr);
 				cat = usuarioDao.buscarProductos1(busqueda);
 				request.setAttribute("categorias", cat);
-				url="JSPs/Buscar.jsp";
+				JDBCUsuarioDAO nuevo = new JDBCUsuarioDAO();
+				if (nuevo.rol.equals("A")) {
+					url="JSPs/BuscarAdmin.jsp";
+				}else if(nuevo.rol.equals("U")){
+					url="JSPs/Buscar.jsp";
+				}
 			} catch (Exception e) {
 				url="JSPs/Buscar.jsp";
 				System.out.println("Error en el login: " + e.getMessage());

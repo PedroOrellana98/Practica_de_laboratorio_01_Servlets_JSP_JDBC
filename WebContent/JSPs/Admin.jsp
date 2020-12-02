@@ -19,9 +19,15 @@
       <a href="./Usuario.jsp" class="brand-logo">Administrador</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       	<li><a href="JSPs/AgregarProducto.jsp">Agregar</a></li>
-      	<li><a href="JSPs/ActualizarAdmin.jsp">Actualizar</a></li>
-        <li><a href="JSPs/Buscar.jsp">Buscar</a></li>
-        <li><a href="JSPs/Listar.jsp">Listar</a></li>
+      	<li><form action="registrarAdministrador" method="GET">
+				<a href="registrarAdministrador">Actualizar</a>
+		</form><li>
+        <li><form action="BuscarControlador" method="GET">
+				<a href="BuscarControlador">Buscar</a>
+		</form><li>
+        <li><form action="ListarProductoControlador" method="GET">
+				<a href="ListarProductoControlador">Listar</a>
+		</form><li>
         <li><a href="JSPs/EliminarAdmin.jsp">Eliminar</a></li>
         <li><a href="JSPs/InicioSesion.jsp">Salir</a></li>
       </ul>
