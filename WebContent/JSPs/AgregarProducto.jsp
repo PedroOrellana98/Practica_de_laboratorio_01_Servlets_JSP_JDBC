@@ -27,20 +27,20 @@
   
   <div class="container">
 	  <h3>Agregar Nuevo Producto: </h3>
-	  <form id = "formulario">
+	  <form action="insertarProducto" method="POST">
 	  		<label for="id">ID del Producto: </label> 
 			<input name="id" type="text" /> <BR />
 			
 			<label for="nombre">Nombre del Producto: </label> 
 			<input name="nombre" type="text" /><BR />
 					
-			<label for="sel">Categoria del producto: 1- LAPTOP; 2- SOBREMESA</label> 
+			<label for="sel">Categoria del producto: 1- SOBREMESA; 2- LAPTOP </label> 
 			<input name="sel" type="text" /><BR />
 			
 			<label for="req">Requerimiento del Producto: 1- DAVID CORNEJO; 2- PEDRO ORELLANA; 3- DANIEL PERALTA; 4- EL PEPE; 5- ETE SETCH: 6- ÑOY AÑAÑIN</label> 
 			<input name="req" type="text" /><BR />
 			
-			<button class="btn waves-effect waves-light green" type="submit" name="botonRegistrar" value="registrar">AGREGAR</button>
+			<button class="btn waves-effect waves-light green" type="submit" name="botonAgregar" value="agregar">AGREGAR</button>
 	
 	  </form>
   </div>

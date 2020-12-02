@@ -18,7 +18,9 @@
     <div class="nav-wrapper container">
       <a href="./Usuario.jsp" class="brand-logo">Administrador</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      	<li><a href="JSPs/AgregarProducto.jsp">Agregar</a></li>
+      	<li><form action="insertarProducto" method="GET">
+				<a href="insertarProducto">Insertar</a>
+		</form><li>
       	<li><form action="registrarAdministrador" method="GET">
 				<a href="registrarAdministrador">Actualizar</a>
 		</form><li>
