@@ -108,26 +108,9 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		return usuarioObject;
 	}
 	
-	/*@Override
-	public Usuario buscarRol() {
-		
-		Usuario usuarioObject = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM usuario WHERE correo=" +  "'" + nuevoCorreo  + "'" + "AND clave=" +  "'" + nuevoClave + "'" );
-
-		try {
-			if (rs != null && rs.next()) {
-				rol = rs.getString("rol");
-				usuarioObject = new Usuario (id, rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"), rs.getString("rol"));
-			}	
-		} catch (SQLException e) {
-			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
-		}
-		return usuarioObject;
-	}
-	*/
 	@Override
 	public List<Producto> listarProductos() {
-		// TODO Auto-generated method stub
+		
 		List<Producto> list = new ArrayList<Producto>();
 	    ResultSet rs = conexionUno.query("SELECT * FROM Producto p, "
 	    		+ "ListaRequerimientos lr, Usuario u, EMPRESA e "
@@ -276,6 +259,18 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 				+ "AND p.nombre = '" + producto + "' "
 				+ "AND e.ID = " + idEmpresa
 				+ " AND u.correo = '" + nuevoCorreo + "' ");
+	}
+
+	@Override
+	public void nuevoProducto(int id, String nombre, int categoria, int requerimiento) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eliminarProducto(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
