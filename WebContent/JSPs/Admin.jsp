@@ -18,7 +18,7 @@
     <div class="nav-wrapper container">
       <a href="./Usuario.jsp" class="brand-logo">Administrador</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      	<li><a href="JSPs/AgregarAdmin.jsp">Agregar</a></li>
+      	<li><a href="JSPs/AgregarProducto.jsp">Agregar</a></li>
       	<li><a href="JSPs/ActualizarAdmin.jsp">Actualizar</a></li>
         <li><a href="JSPs/Buscar.jsp">Buscar</a></li>
         <li><a href="JSPs/Listar.jsp">Listar</a></li>

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ProductoDAO;
+import modelo.Categoria;
 import modelo.Empresa;
 import modelo.ListaRequerimientos;
 import modelo.Producto;
@@ -43,6 +44,18 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 		}
 		return producto;
 	}
+	
+	@Override
+	public void nuevoProducto(int id, String nombre, int categoria, int requerimiento) {
+				
+		conexionUno.update("INSERT INTO Producto VALUES(" + id +", '" + nombre.toUpperCase() + "', " + categoria + ", " + requerimiento + ");");
+	}
+	
+	@Override
+	public void eliminarProducto(int id) {
+				
+		conexionUno.update("DELETE FROM Producto WHERE ID = " + id + ";");
+	}
 
 	@Override
 	public void update(Producto producto) {
@@ -74,7 +87,8 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 
 		return list;
 	}
-
+	
+	
 	@Override
 	public Usuario buscar(String correo, String clave) {
 		// TODO Auto-generated method stub
@@ -95,9 +109,45 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 	}
 
 	@Override
-	public List<ListaRequerimientos> listarRequerimientos() {
+	public List<ListaRequerimientos> listarProductos0() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Producto> listarProductos1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Empresa> listarProductos2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Producto> buscarProductos0(String buscar) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Categoria> buscarProductos1(String buscar) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void actualizarRequerimiento(String producto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actualizarProducto(String nombre, String producto) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
