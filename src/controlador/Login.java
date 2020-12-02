@@ -80,20 +80,17 @@ public class Login extends HttpServlet {
 				if (nuevo.rol.equals("A")) {
 					url="JSPs/Admin.jsp";
 					System.out.println("entró admin");
-					request.getRequestDispatcher(url).forward(request, response);
 				}else if(nuevo.rol.equals("U")){
 					url="JSPs/Usuario.jsp";
 					System.out.println("Entró usr");
-					request.getRequestDispatcher(url).forward(request, response);
 				}
-				url="JSPs/Admin.jsp";
 			} catch (Exception e) {
 				url="JSPs/InicioSesion.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 			
-			
-			
+			request.getRequestDispatcher(url).forward(request, response);
+	
 		}
 	}
 
