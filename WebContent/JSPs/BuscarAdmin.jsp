@@ -1,66 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<!-- Materialize CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<title>Registrar</title>
+<title>Buscar</title>
 </head>
 <body>
 <!-- Materialize SCRIPT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<nav class="light-blue darken-2">
+<nav class="cyan darken-2">
     <div class="nav-wrapper container">
-      <a href="./Admin.jsp" class="brand-logo">Agregar</a>
+      <form action="Login" method="GET">
+				<a href="Login">Administrador</a>
+		</form>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      	<li><a href="./Registrar.jsp">Agregar</a></li>
-        <li><a href="./Buscar.jsp">Buscar</a></li>
-        <li><a href="./Listar.jsp">Listar</a></li>
-        <li><a href="./Home.jsp">Salir</a></li>
       </ul>
     </div>
   </nav>
   
-  <c:set var="p1" value="${ requestScope['usuario'] }" />
-  <c:set var="p2" value="${ requestScope['idc'] }" />
-  
- <div class="container">
- 
- <h3>Agregar requerimientos</h3>
-	
-
-	<div class="row">
-    	<form class="col s12" action="/Practica-1/AgregarNumero?ced=${p2 }" method="POST">
-      		<div class="row">
-        		<div class="input-field col s6">
-        			<input id="produc" name="Producto" type="text" class="validate">
-          			<label for="produc">Producto</label>
+<div class="container">
+	<h3>Buscar Productos</h3>
+		<form action="BuscarControlador" method="POST">
+			<div class="row">
+        		<div class="input-field col s12">
+          			<input id="busqueda" type="text" name="buscar">
+          			<button class="btn waves-effect waves-light green" type="submit" name="botonBuscar" value="buscar">BUSCAR</button>
         		</div>
-        		
-      			<div class="input-field col s6">
-      				<input id="categoria" type="text" name="Categoria" class="validate">
-					<label for="categoria">Categoria</label>
-      			</div>
-		
-				<div class="input-field col s6">
-      				<input id="empresa" type="text" name="Empresa" class="validate">
-					<label for="empresa">Empresa</label>
-      			</div>
-      			
-        	</div>
-        	
-        	<button type="submit" name="agregar" value="ingresar" class="btn waves-effect waves-light blue darken-1">Agregar</button>
-        	<button type="submit" name="regresar" value="regresar" class="btn waves-effect waves-light light-blue darken-4">Regresar</button>
-       </form>
-    </div>
-</div>
-  
+      		</div>
+		</form>
+	<table class="highlight centered">
+	  <thead>
+		<tr>
+			<th>ID</th>
+			<th>Producto</th>
+			<th>Categoria<th>
+		</tr>
+	</thead>
+		<tbody>
+			<c:forEach var="pr" items="${productos}" varStatus="loop">
+				<tr>
+				<td>${pr.idProducto}</td>
+				<td>${pr.nombre}</td>
+				<td>${categorias[loop.index].nombre}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>  
+  	
+
 </body>
-<footer class="page-footer blue darken-4">
+<footer class="page-footer cyan darken-4">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">

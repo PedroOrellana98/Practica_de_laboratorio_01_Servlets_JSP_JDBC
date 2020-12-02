@@ -16,11 +16,17 @@
 
   <nav class="cyan darken-2">
     <div class="nav-wrapper container">
-      <a href="./Usuario.jsp" class="brand-logo">Usuario</a>
+      <a class="brand-logo">Usuario</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      	<li><a href="JSPs/Agregar.jsp">Agregar</a></li>
-        <li><a href="JSPs/Buscar.jsp">Buscar</a></li>
-        <li><a href="JSPs/Listar.jsp">Listar</a></li>
+      	<li><form action="registrarControlador" method="GET">
+				<a href="registrarControlador">Agregar</a>
+		</form><li>
+        <li><form action="BuscarControlador" method="GET">
+				<a href="BuscarControlador">Buscar</a>
+		</form><li>
+        <li><form action="ListarProductoControlador" method="GET">
+				<a href="ListarProductoControlador">Listar</a>
+		</form><li>
         <li><a href="JSPs/InicioSesion.jsp">Salir</a></li>
       </ul>
     </div>
@@ -29,6 +35,10 @@
 <div class="container">
 	<h3>Bienvenido</h3>
 	
+	<form action="UsuarioControlador" method="POST">
+		<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalU" value="mostrar">Mostar info</button>
+	</form>
+				
 	<table class="highlight centered">
 	  <thead>
 		<tr>
@@ -49,9 +59,7 @@
          </tr>
 		</c:forEach>
 		
-				<form action="UsuarioControlador" method="POST">
-					<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalU" value="mostrar">Mostar info</button>
-				</form>
+				
 	</tbody>
 	</table>
 	

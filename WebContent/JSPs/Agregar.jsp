@@ -17,7 +17,9 @@
 
 <nav class="cyan darken-2">
     <div class="nav-wrapper container">
-      <a href="JSPs/Usuario.jsp" class="brand-logo">Usuario</a>
+      <form action="Login" method="GET">
+				<a href="Login">Usuario</a>
+		</form>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       </ul>
     </div>
@@ -25,7 +27,7 @@
   
 <div class="container">
 	<h3>Registar Productos</h3>
-		<form action="../registrarControlador" method="POST">
+		<form action="Practica_de_laboratorio_01_Servlets_JSP_JDBC/registrarControlador" method="POST">
 			<div class="row">
         		<div class="input-field col s12">
           			<input id="busqueda" type="text" name="producto">

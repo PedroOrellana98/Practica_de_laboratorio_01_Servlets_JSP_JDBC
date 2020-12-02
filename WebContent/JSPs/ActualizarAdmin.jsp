@@ -17,7 +17,9 @@
 
 <nav class="cyan darken-2">
     <div class="nav-wrapper container">
-      <a href="JSPs/Admin.jsp" class="brand-logo">Administrador</a>
+      <form action="Login" method="GET">
+				<a href="Login">Administrador</a>
+		</form>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       </ul>
     </div>
@@ -25,7 +27,7 @@
   
 <div class="container">
 	<h3>Actualizar Productros</h3>
-		<form action="../registrarAdministrador" method="POST">
+		<form action="registrarAdministrador" method="POST">
 			<div class="row">
         		<label for="fname">Nombre del producto nuevo:</label><br>
         			<input class="busqueda" type="text" name="nombre">

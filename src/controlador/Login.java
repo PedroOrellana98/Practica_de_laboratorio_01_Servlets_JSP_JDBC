@@ -44,6 +44,26 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html:charset=UTF-8");
+		String url = null;
+
+		HttpSession sesion = request.getSession(true);
+
+		sesion.setAttribute("accesos", sesion.getId());
+		
+			try {
+				JDBCUsuarioDAO nuevo = new JDBCUsuarioDAO();
+				if (nuevo.rol.equals("A")) {
+					url="JSPs/Admin.jsp";
+				}else if(nuevo.rol.equals("U")){
+					url="JSPs/Usuario.jsp";
+				}
+			} catch (Exception e) {
+				url="JSPs/InicioSesion.jsp";
+				System.out.println("Error en el login: " + e.getMessage());
+			}
+			
+			request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	/**
@@ -65,8 +85,6 @@ public class Login extends HttpServlet {
 		HttpSession sesion = request.getSession(true);
 
 		sesion.setAttribute("accesos", sesion.getId());
-		System.out.println("ID sesion: " + String.valueOf(sesion.getId()));
-		System.out.println(accion);	
 		
 		if (accion.equals("login")) {
 			try {
@@ -79,10 +97,8 @@ public class Login extends HttpServlet {
 				JDBCUsuarioDAO nuevo = new JDBCUsuarioDAO();
 				if (nuevo.rol.equals("A")) {
 					url="JSPs/Admin.jsp";
-					System.out.println("entró admin");
 				}else if(nuevo.rol.equals("U")){
 					url="JSPs/Usuario.jsp";
-					System.out.println("Entró usr");
 				}
 			} catch (Exception e) {
 				url="JSPs/InicioSesion.jsp";

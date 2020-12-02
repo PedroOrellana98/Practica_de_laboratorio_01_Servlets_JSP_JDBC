@@ -17,7 +17,9 @@
 
 <nav class="cyan darken-2">
     <div class="nav-wrapper container">
-      <a href="JSPs/Usuario.jsp" class="brand-logo">Usuario</a>
+      <form action="Login" method="GET">
+				<a href="Login">Usuario</a>
+		</form>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       </ul>
     </div>
@@ -25,7 +27,9 @@
   
 <div class="container">
 	<h3>Lista de Productos</h3>
-	
+	<form action="ListarProductoControlador" method="POST">
+				<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalLista" value="visualizar">Mostar info</button>
+	</form>
 	<table class="highlight centered">
 	  <thead>
 		<tr>
@@ -34,9 +38,6 @@
 		</tr>
 	</thead>
 		<tbody>
-			<form action="../ListarProductoControlador" method="POST">
-				<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalLista" value="visualizar">Mostar info</button>
-			</form>
 			<c:forEach var="pr" items="${productos}">
 				<tr>
 				<td>${pr.idProducto}</td>
@@ -46,7 +47,6 @@
 		</tbody>
 	</table>
 </div>  
-  	
 
 </body>
 <footer class="page-footer cyan darken-4">

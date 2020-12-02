@@ -1,84 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<!-- Materialize CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<title>Home</title>
+<title>Listar</title>
 </head>
 <body>
 <!-- Materialize SCRIPT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <nav class="light-blue darken-2">
+<nav class="cyan darken-2">
     <div class="nav-wrapper container">
-      <a href="./Home.jsp" class="brand-logo">Home</a>
+      <form action="Login" method="GET">
+				<a href="Login">Administrador</a>
+		</form>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="./InicioSesion.jsp">Iniciar Sesión</a></li>
-        <li><a href="./RegistrarU.jsp">Registrarse</a></li>
       </ul>
     </div>
   </nav>
   
 <div class="container">
-<br>
-	
-	<div class="col s12 m7">
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="../Imagenes/soccer-ball.png" width="40" height="140">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <h5>Nombre de la empresa</h5>
-        </div>
-        <div class="card-action">
-          <p>Listado productos</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12 m7">
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="../Imagenes/cubes.png" width="40" height="140">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <h5>Nombre de la empresa</h5>
-        </div>
-        <div class="card-action">
-          <p>Listado productos</p>
-        </div>
-      </div>
-    </div>
-    
-  </div><div class="col s12 m7">
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="../Imagenes/open-book.png" width="40" height="140">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <h5>Nombre de la empresa</h5>
-        </div>
-        <div class="card-action">
-          <p>Listado productos</p>
-        </div>
-      </div>
-    </div>
-  </div>
+	<h3>Lista de Productos</h3>
+	<form action="ListarProductoControlador" method="POST">
+				<button class="btn waves-effect waves-light green" type="submit" name="mostrarPrincipalLista" value="visualizar">Mostar info</button>
+	</form>
+	<table class="highlight centered">
+	  <thead>
+		<tr>
+			<th>ID</th>
+			<th>Nombre</th>
+		</tr>
+	</thead>
+		<tbody>
+			<c:forEach var="pr" items="${productos}">
+				<tr>
+				<td>${pr.idProducto}</td>
+				<td>${pr.nombre}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>  
 
-    
-
-</div>
 </body>
-
-<footer class="page-footer blue darken-4">
+<footer class="page-footer cyan darken-4">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -106,5 +77,4 @@
             </div>
           </div>
 </footer>
-
 </html>
