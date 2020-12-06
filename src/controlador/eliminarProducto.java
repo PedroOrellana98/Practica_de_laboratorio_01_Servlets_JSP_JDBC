@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,18 +14,22 @@ import javax.servlet.http.HttpSession;
 
 import dao.DAOFactory;
 import dao.ProductoDAO;
+import dao.UsuarioDAO;
+import modelo.Categoria;
+import modelo.Producto;
+import mysql.jdbc.JDBCUsuarioDAO;
 
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/insertarProducto")
-public class insertarProducto extends HttpServlet {
+@WebServlet("/eliminarProducto")
+public class eliminarProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public insertarProducto() {
+    public eliminarProducto() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,22 +44,22 @@ public class insertarProducto extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
+
 		String url = null;
-		ProductoDAO producto = DAOFactory.getFactory().getProductoDAO();
-		
+
 		HttpSession sesion = request.getSession(true);
 
 		sesion.setAttribute("accesos", sesion.getId());
-		
+
 			try {
-				producto.leerMaximo();
-				url="JSPs/AgregarProducto.jsp";
+				url="JSPs/EliminarAdmin.jsp";
 			} catch (Exception e) {
-				url="JSPs/InicioSesion.jsp";
+				url="JSPs/EliminarAdmin.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 			request.getRequestDispatcher(url).forward(request, response);
@@ -67,33 +73,26 @@ public class insertarProducto extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
 
-		ProductoDAO producto = DAOFactory.getFactory().getProductoDAO();
-		int id = 0;
-		String nombre = null;
-		int sel = 0;
-		int req = 0;
+		ProductoDAO productoDao = DAOFactory.getFactory().getProductoDAO();
+		String eliminar = null;
 		String url = null;
-		//producto es el textfield de ingreso
-		
-		//accion es el name del boton
-		Object accion = request.getParameter("botonAgregar");
+
+		Object accion = request.getParameter("botonEliminar");
 		HttpSession sesion = request.getSession(true);
 
 		sesion.setAttribute("accesos", sesion.getId());
 		
-		//registar es el value del boton
-		if (accion.equals("agregar")) {
+		if (accion.equals("eliminar")) {
 			try {
-				nombre = request.getParameter("nombre");
-				sel = Integer.parseInt(request.getParameter("sel"));
-				req = Integer.parseInt(request.getParameter("req"));
-				producto.nuevoProducto(nombre, sel, req);
+				eliminar = request.getParameter("eliminar");
+				productoDao.elminiarProducto(eliminar);
 				url="JSPs/Admin.jsp";
 			} catch (Exception e) {
-				url="JSPs/InicioSesion.jsp";
+				url="JSPs/Admin.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
 			request.getRequestDispatcher(url).forward(request, response);
+			
 		}
 	}
 

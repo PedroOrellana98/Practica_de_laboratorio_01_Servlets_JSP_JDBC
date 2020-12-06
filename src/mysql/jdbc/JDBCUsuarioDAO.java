@@ -262,13 +262,25 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	}
 
 	@Override
-	public void nuevoProducto(int id, String nombre, int categoria, int requerimiento) {
+	public void nuevoProducto(String nombre, int categoria, int requerimiento) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void eliminarProducto(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Producto leerMaximo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void elminiarProducto(String nombre) {
 		// TODO Auto-generated method stub
 		
 	}
