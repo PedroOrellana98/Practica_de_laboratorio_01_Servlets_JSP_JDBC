@@ -14,6 +14,7 @@ import modelo.Usuario;
 
 public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements ProductoDAO {
 	
+	private static int id;
 	@Override
 	public void createTable() {
 		// TODO Auto-generated method stub
@@ -46,9 +47,42 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 	}
 	
 	@Override
-	public void nuevoProducto(int id, String nombre, int categoria, int requerimiento) {
-				
+	public void nuevoProducto(String nombre, int categoria, int requerimiento) {
+		id++;	
 		conexionUno.update("INSERT INTO Producto VALUES(" + id +", '" + nombre.toUpperCase() + "', " + categoria + ", " + requerimiento + ");");
+	}
+	
+	@Override
+	public Producto leerMaximo() {
+		// TODO Auto-generated method stub
+		Producto producto = null;
+		ResultSet rsProduct = conexionUno.query("SELECT MAX(id) AS max_id FROM Producto;");
+		id = 0;
+		try {
+			if (rsProduct != null && rsProduct.next()) {
+				id = rsProduct.getInt("max_id");
+				System.out.println("Este es el id= " + id);
+				producto = new Producto(String.valueOf(id), rsProduct.getString("nombre"));
+			}
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCProductDAO:read): " + e.getMessage());
+		}
+		return producto;
+	}
+	
+	@Override
+	public void elminiarProducto(String nombre) {
+		
+		String idEmpresa = JDBCUsuarioDAO.idEmpresa;
+		
+		conexionUno.update("DELETE p FROM ListaRequerimientos lr,"
+				+ "Usuario u, Empresa e, Producto p, Categoria c "
+				+ "WHERE lr.Usuario_ID = u.ID "
+				+ "AND lr.ID = p.ListaRequerimientos_ID "
+				+ "AND e.ID = u.Empresa_ID "
+				+ "AND p.Categoria_ID = c.ID "
+				+ "AND e.ID = " + idEmpresa
+				+ " AND p.nombre = " + "'" + nombre + "';");
 	}
 	
 	@Override
@@ -149,5 +183,7 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, String> implements
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 }

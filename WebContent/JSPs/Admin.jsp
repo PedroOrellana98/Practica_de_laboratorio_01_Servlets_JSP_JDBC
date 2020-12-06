@@ -30,7 +30,9 @@
         <li><form action="ListarProductoControlador" method="GET">
 				<a href="ListarProductoControlador">Listar</a>
 		</form><li>
-        <li><a href="JSPs/EliminarAdmin.jsp">Eliminar</a></li>
+        <li><form action="eliminarProducto" method="GET">
+				<a href="eliminarProducto">Eliminar</a>
+		</form><li>
         <li><a href="JSPs/InicioSesion.jsp">Salir</a></li>
       </ul>
     </div>

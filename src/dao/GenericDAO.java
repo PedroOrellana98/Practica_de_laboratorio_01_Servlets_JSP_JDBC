@@ -42,8 +42,12 @@ public interface GenericDAO<T, ID> {
 
 	void actualizarProducto(String nombre, String producto);
 
-	void nuevoProducto(int id, String nombre, int categoria, int requerimiento);
+	void nuevoProducto(String nombre, int categoria, int requerimiento);
 
 	void eliminarProducto(int id);
+
+	Producto leerMaximo();
+
+	void elminiarProducto(String nombre);
 
 }

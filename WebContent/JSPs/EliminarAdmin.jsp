@@ -9,7 +9,7 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<title>Insertar</title>
+<title>Eliminar</title>
 </head>
 <body>
 <!-- Materialize SCRIPT -->
@@ -25,23 +25,18 @@
     </div>
   </nav>
   
-  <div class="container">
-	  <h3>Agregar Nuevo Producto: </h3>
-	  <form action="insertarProducto" method="POST">
-			
-			<label for="nombre">Nombre del Producto: </label> 
-			<input name="nombre" type="text" /><BR />
-					
-			<label for="sel">Categoria del producto: 1- SOBREMESA; 2- LAPTOP </label> 
-			<input name="sel" type="text" /><BR />
-			
-			<label for="req">Requerimiento del Producto: 1- DAVID CORNEJO; 2- PEDRO ORELLANA; 3- DANIEL PERALTA; 4- EL PEPE; 5- ETE SETCH: 6- ÑOY AÑAÑIN</label> 
-			<input name="req" type="text" /><BR />
-			
-			<button class="btn waves-effect waves-light green" type="submit" name="botonAgregar" value="agregar">AGREGAR</button>
-	
-	  </form>
-  </div>
+<div class="container">
+	<h3>Eliminar Productos</h3>
+		<form action="eliminarProducto" method="POST">
+			<div class="row">
+        		<div class="input-field col s12">
+          			<input id="busqueda" type="text" name="eliminar">
+          			<button class="btn waves-effect waves-light green" type="submit" name="botonEliminar" value="eliminar">ELIMINAR</button>
+        		</div>
+      		</div>
+		</form>
+</div>  
+  	
 
 </body>
 <footer class="page-footer cyan darken-4">
@@ -68,7 +63,7 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2020 Universidad Politécnica Salesiana
+            © 2020 Copyright Text
             </div>
           </div>
 </footer>
