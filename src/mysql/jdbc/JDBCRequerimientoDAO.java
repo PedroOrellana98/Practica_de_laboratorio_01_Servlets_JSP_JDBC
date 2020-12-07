@@ -131,4 +131,22 @@ public class JDBCRequerimientoDAO extends JDBCGenericDAO<ListaRequerimientos, St
 		
 	}
 
+	@Override
+	public List<Producto> listarPrincipal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Categoria> listarPrincipal1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Empresa> listarPrincipal2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

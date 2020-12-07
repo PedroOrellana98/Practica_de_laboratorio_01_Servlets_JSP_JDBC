@@ -284,6 +284,24 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public List<Producto> listarPrincipal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Categoria> listarPrincipal1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Empresa> listarPrincipal2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
