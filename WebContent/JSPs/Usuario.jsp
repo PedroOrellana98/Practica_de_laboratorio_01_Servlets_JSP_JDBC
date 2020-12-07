@@ -27,7 +27,9 @@
         <li><form action="ListarProductoControlador" method="GET">
 				<a href="ListarProductoControlador">Listar</a>
 		</form><li>
-        <li><a href="JSPs/InicioSesion.jsp">Salir</a></li>
+        <li><form action="Salir" method="GET">
+				<a href="Salir">Salir</a>
+		</form><li>
       </ul>
     </div>
   </nav>

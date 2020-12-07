@@ -1,5 +1,8 @@
 package mysql.jdbc;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.EmpresaDAO;
@@ -130,6 +133,37 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, String> implements E
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public List<Empresa> listarPrincipal2() {
+		
+		List<Empresa> list = new ArrayList<Empresa>();
+		ResultSet rs = conexionUno.query("SELECT * FROM Producto p, "
+	    		+ "ListaRequerimientos lr, Usuario u, EMPRESA e, Categoria c "
+	    		+ "WHERE  p.ListaRequerimientos_ID = lr.ID "
+	    		+ "AND lr.Usuario_ID = u.ID "
+	    		+ "AND u.Empresa_ID = e.ID "
+	    		+ "AND c.ID = p.Categoria_ID");
+	    try {
+			while (rs.next()) {
+				Empresa empresa = new Empresa(rs.getString("id"), rs.getString("e.nombre"));
+				list.add(empresa);
+			}
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
+		}
+		return list;
+	}
 
+	@Override
+	public List<Producto> listarPrincipal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public List<Categoria> listarPrincipal1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

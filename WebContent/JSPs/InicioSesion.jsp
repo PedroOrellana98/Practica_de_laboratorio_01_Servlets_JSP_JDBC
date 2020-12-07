@@ -17,7 +17,7 @@
 
   <nav class="light-blue darken-2">
     <div class="nav-wrapper container">
-      <a href="../index.html" class="brand-logo">Home</a>
+      <a href="../index.jsp" class="brand-logo">Home</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       </ul>
     </div>

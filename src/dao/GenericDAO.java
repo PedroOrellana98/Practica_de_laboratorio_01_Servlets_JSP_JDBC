@@ -50,4 +50,10 @@ public interface GenericDAO<T, ID> {
 
 	void elminiarProducto(String nombre);
 
+	List<Producto> listarPrincipal();
+
+	List<Categoria> listarPrincipal1();
+
+	List<Empresa> listarPrincipal2();
+
 }

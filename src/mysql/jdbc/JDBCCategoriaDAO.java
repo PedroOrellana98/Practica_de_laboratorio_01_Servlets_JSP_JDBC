@@ -150,5 +150,38 @@ public class JDBCCategoriaDAO extends JDBCGenericDAO<Categoria, String> implemen
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public List<Categoria> listarPrincipal1() {
+		
+		List<Categoria> list = new ArrayList<Categoria>();
+		ResultSet rs = conexionUno.query("SELECT * FROM Producto p, "
+	    		+ "ListaRequerimientos lr, Usuario u, EMPRESA e, Categoria c "
+	    		+ "WHERE  p.ListaRequerimientos_ID = lr.ID "
+	    		+ "AND lr.Usuario_ID = u.ID "
+	    		+ "AND u.Empresa_ID = e.ID "
+	    		+ "AND c.ID = p.Categoria_ID");
+	    try {
+			while (rs.next()) {
+				Categoria categoria = new Categoria(rs.getString("id"), rs.getString("c.nombre"));
+				list.add(categoria);
+			}
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCUsuarioDAO:read): " + e.getMessage());
+		}
+		return list;
+	}
+
+	@Override
+	public List<Producto> listarPrincipal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Empresa> listarPrincipal2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

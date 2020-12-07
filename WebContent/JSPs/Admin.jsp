@@ -33,7 +33,9 @@
         <li><form action="eliminarProducto" method="GET">
 				<a href="eliminarProducto">Eliminar</a>
 		</form><li>
-        <li><a href="JSPs/InicioSesion.jsp">Salir</a></li>
+        <li><form action="Salir" method="GET">
+				<a href="Salir">Salir</a>
+		</form><li>
       </ul>
     </div>
   </nav>

@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -10,23 +12,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CategoriaDAO;
 import dao.DAOFactory;
-import dao.UsuarioDAO;
+import dao.EmpresaDAO;
+import dao.ProductoDAO;
+import modelo.Categoria;
 import modelo.Empresa;
-import modelo.Usuario;
+import modelo.Producto;
 import mysql.jdbc.JDBCUsuarioDAO;
 
+
 /**
- * Servlet implementation class Login
+ * Servlet implementation class Usuario
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/indexControlador")
+public class indexControlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public indexControlador() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,37 +45,19 @@ public class Login extends HttpServlet {
 	}
 
 	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
+
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setContentType("text/html:charset=UTF-8");
-		String url = null;
-
-		HttpSession sesion = request.getSession(true);
-
-		sesion.setAttribute("accesos", sesion.getId());
 		
-			try {
-				JDBCUsuarioDAO nuevo = new JDBCUsuarioDAO();
-				if(nuevo.id == null){
-					url="JSPs/InicioSesion.jsp";
-				}else {
-					if (nuevo.rol.equals("A")) {
-						sesion.setAttribute("accesos", 1);
-						url="JSPs/Admin.jsp";
-					}else if(nuevo.rol.equals("U")){
-						sesion.setAttribute("accesos", 1);
-						url="JSPs/Usuario.jsp";
-					}
-				}
-			} catch (Exception e) {
-				url="JSPs/InicioSesion.jsp";
-				System.out.println("Error en el login: " + e.getMessage());
-			}
-			System.out.println(url);
-			request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	/**
@@ -79,46 +67,37 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
-
-		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
-		String correo = "";
-		String clave = "";
 		String url = null;
-
-		Object accion = request.getParameter("action");
-		Usuario user = new Usuario();
-		Empresa emp = new Empresa();
-		HttpSession sesion = request.getSession(true);
 		
-		if (accion.equals("login")) {
+		//RequerimientosDAO requerimientoDAO = DAOFactory.getFactory().getRequerimientoDAO();
+		EmpresaDAO empresaDao = DAOFactory.getFactory().getEmpresaDAO();
+		ProductoDAO productoDao = DAOFactory.getFactory().getProductoDAO();
+		CategoriaDAO categoriaDao = DAOFactory.getFactory().getCategoriaDAO();
+
+		Object mostrar = request.getParameter("mostrarTabla");
+		List<Empresa> em = new ArrayList<Empresa>();
+		List<Producto> pr = new ArrayList<Producto>();
+		List<Categoria> cat = new ArrayList<Categoria>();
+		HttpSession sesion = request.getSession(true);
+
+		sesion.setAttribute("accesos", sesion.getId());
+		System.out.println("ID sesion Usuario: " + String.valueOf(sesion.getId()));
+		
+		if (mostrar.equals("tabla")) {
 			try {
-				correo = request.getParameter("correo");
-				clave = request.getParameter("clave");
-				user = usuarioDao.buscar(correo, clave);
-				request.setAttribute("usuario", user);
-				emp = usuarioDao.buscarEmpresa();
-				
-				JDBCUsuarioDAO nuevo = new JDBCUsuarioDAO();
-				if(nuevo.id == null){
-					
-					url="JSPs/InicioSesion.jsp";
-				}else {
-					if (nuevo.rol.equals("A")) {
-						sesion.setAttribute("accesos", 1);
-						url="JSPs/Admin.jsp";
-					}else if(nuevo.rol.equals("U")){
-						sesion.setAttribute("accesos", 1);
-						url="JSPs/Usuario.jsp";
-					}
-				}	
-				
+				pr = productoDao.listarPrincipal();
+				cat = categoriaDao.listarPrincipal1();
+				em = empresaDao.listarPrincipal2();
+
+				request.setAttribute("productos", pr);
+				request.setAttribute("categorias", cat);
+				request.setAttribute("empresas", em);
+				url="index.jsp";
 			} catch (Exception e) {
-				url="JSPs/InicioSesion.jsp";
+				url="index.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
 			}
-			System.out.println(url);
 			request.getRequestDispatcher(url).forward(request, response);
-	
 		}
 	}
 
@@ -126,6 +105,13 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
+	 */
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
