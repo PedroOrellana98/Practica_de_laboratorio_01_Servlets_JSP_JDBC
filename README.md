@@ -65,12 +65,16 @@ URL del Repositorio: https://github.com/PedroOrellana98/Practica_de_laboratorio_
 
 Nombres de Usuario: PedroOrellana98, DavidCornejoB, Dperaltat
 
+![Image 1](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/0.PNG)
+
 # 2. Desarrollo de la aplicación JEE:
 
 Como primer paso debemos definir la arquitectura que se va a usar dentro de la aplicación JEE, en este caso es la
 arquitectura cliente servidor, la cual sigue un patrón de diseño DAO la cual se conecta con los Servlets y un
 controlador de la arquitectura MVC (Modelo, Vista, Controlador), para realizar las operaciones y validaciones que
 vienen de la base de datos MySQL.
+
+![Image 2](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/1.jpg)
 
 El proyecto estará dividido en varias secciones, el Web Content que contiene la parte de la vista como lo son los
 JSP o la parte de HTML de la página web, las imágenes para los estilos de la página, los estilos CSS de la página,
@@ -89,6 +93,14 @@ controlador, dao, modelo y jdbc.
 
 Página Principal:
 
+![Image 3](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/39-1.PNG)
+
+![Image 4](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/39-2.PNG)
+
+![Image 5](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/2-1.PNG)
+
+![Image 6](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/2-2.png)
+
 # 2.1 JSP: Composición de JSPs, visualizar tablas y conexión con JSTL
 
 Composición JSPs
@@ -100,29 +112,45 @@ EliminarAdmin.jsp, Listar.jsp, ListarAdmin.jsp y Usuario.jsp.
 
 - ActualizarAdmin.jsp: Actualiza el nombre del producto que desea por otro, por ejemplo: cambiar el nombre
     de la laptop LAPTOP_GS3 a LAPTOP_GS 5
+    
+![Image 7](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/3.PNG)
+
 - Admin.jsp: Es la pagina de inicio del administrador en la cual encontramos las opciones de listar, eliminar,
     insertar, buscar, actualizar producto.
 
+![Image 8](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/4.PNG)
 
 - Agregar.jsp: Agrega un requerimiento a un producto con un estado de “E” = en espera.
+
+![Image 9](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/9.PNG)
+
 - AgregarProducto.jsp: Agrega un producto al catalogo de la empresa que se desea con su respectiva
     categoría, como ejemplo:
     - Nombre del producto: SOBREMESA_GL6 5
     - Categoría del producto: 1 - > pertenece a SOBREMESA
     - Requerimiento del producto (id de Persona): 1 - > pertenece a DAVID CORNEJO
+
+![Image 10](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/5.PNG)
+    
 - Buscar.jsp: Busca un producto en la lista de productos que están en la base de datos.
 - BuscarAdmin.jsp: Busca un producto en la lista de productos que están en la base de datos.
 
+![Image 11](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/11.PNG)
 
 - EliminarAdmin.jsp: Elimina un producto que se encuentre dentro de la empresa ejemplo: SOBREMESA_G
     de la empresa MSI.
+
+![Image 12](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/6.PNG)
+
 - Listar.jsp: Lista todos los productos de la empresa con el id de requerimiento al cual está asociado.
 - ListarAdmin.jsp: Lista todos los productos de la empresa con el id de requerimiento al cual está asociado.
 
-
+![Image 13](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/7.PNG)
 
 - Usuario.jsp: Es la página de inicio del usuario en la cual encontramos las opciones de listar, insertar, buscar,
     actualizar requerimientos.
+
+![Image 14](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/8.PNG)
 
 Nota: En la página principal de index.jsp, como el de usuario.jsp y admin.jsp se puede encontrar un botón el cual
 lista los productos o requerimientos de una forma mas detallada como: el id, nombre del producto, categoría, y
@@ -156,6 +184,8 @@ comandos:
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 Para que estos funcionen las librerías debe estar previamente cargadas en la carpeta WEB-INF.
+
+![Image 15](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/9.PNG)
 
 # 2.2 JDBC: Composición de JDBCs, sentencias SQL y conexión con MySQL
 
@@ -195,6 +225,7 @@ entrada que son el correo y la clave que se obtienen del JSP de Inicio de Sesión
 El id y el rol se guardan en variables globales para utilizarlas en otros métodos, para colocar el valor del id se utiliza
 el comando rs.getString("id"); y para el rol el comando: rs.getString("id");
 
+![Image 16](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/10.PNG)
 
 - Buscar id de empresa
 
@@ -203,6 +234,8 @@ guardado en una variable global con anterioridad.
 
 El id de la empresa se guarda en una variable global para utilizarlas en otros métodos, para colocar el valor del id
 de empresa se utiliza el comando rs.getString("id");
+
+![Image 17](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/11.PNG)
 
 - Listar productos de empresa
 
@@ -215,12 +248,12 @@ sentencia para 3 distintas clases como:
 
 - List<Producto> listarProductos
 - List<Empresa> listarEmpresas
-
-
 - List<Requerimiento> listarRequerimientos
 
 Que son las 3 combinaciones de tablas que se necesitan para imprimir los resultados en la tabla de listar ya sea
 para un usuario o para el administrador.
+
+![Image 18](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/12.PNG)
 
 - Buscar Producto
 
@@ -238,17 +271,23 @@ Que son las 2 combinaciones de tablas que se necesitan para imprimir los resulta
 para un usuario o para el administrador.
 
 
+![Image 19](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/13.PNG)
+
 - Actualizar Requerimiento
 
 Se realiza una consulta en la cual se va a actualizar el requerimiento de producto pasando de un estado de “R” - >
 rechazado a un estado de “E” - > en camino, a partir del id de la empresa, y el correo de la persona que ingreso,
 además de utilizar un parámetro de entrada para determinar el nombre de producto a actualizar.
 
+![Image 20](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/14.PNG)
+
 - Actualizar Producto
 
 Se realiza una consulta en la cual se va a actualizar el producto utilizando 2 parámetros: el primero para actualizar
 el nombre que se ingrese dentro del formulario y el segundo el nombre del producto que necesita actualizar, esto
 a partir del id de la empresa, y el correo de la persona que ingreso.
+
+![Image 21](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/15.PNG)
 
 - Insertar Producto y seleccionar id máximo
 
@@ -261,17 +300,25 @@ con el nombre LAPTOP_GL63 tiene el id 10 entonces se obtiene el ultimo identific
 que en este caso es 10 y se le incrementa en 1 cada vez para insertar un producto, esto se realiza para que no
 exista un problema de llaves primarias dentro de la base de datos.
 
+![Image 22](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/16.PNG)
+
+![Image 23](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/17.PNG)
+
 - Eliminar Producto
 
 Se crea una consulta en la cual se va a eliminar un producto utilizando 1 parámetro de ingreso el cual es el nombre
 del producto al que deseo eliminar de la base de datos y el id de la empresa que se obtiene de la variable global
 de la clase JDBCUsuarioDAO.java
 
+![Image 24](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/18.PNG)
+
 Conexión con MySQL
 
 Para realizar una conexión de la base de datos SQL se debe tener la clase ContextJDBC.java en la cual se va a
 digitar los valores del nombre del esquema de lavase, el usuario de la base de datos registrada, la clave de la base
 de datos y si es necesario cambiar el puerto escucha (por defecto es el puerto 3306)
+
+![Image 25](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/19.PNG)
 
 # 2.3 Servlets: Composición de Servlets, métodos GET y POST y filtro
 
@@ -303,6 +350,10 @@ del formulario, cuando se hayan insertado los valores se van a colocar dentro de
 la tabla del JSP en tiempo real redireccionando a la misma página si se cumplió la condición, si no es así no se
 ejecutara la acción dentro de las listas y no se ejecutara la sentencia en la base de datos.
 
+![Image 26](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/20.PNG)
+
+![Image 27](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/21.PNG)
+
 - Eliminar Producto
 
 GET: en el método GET del controlador lo que se realiza es redirigir al usuario a la pagina que corresponda, como
@@ -313,12 +364,16 @@ después lo que se hace es validar las acciones de los botones, si se acciono el 
 eliminarProducto que está dentro del paquete jdbc, en el cual el método recibe un parámetro de tipo String que es
 el texto que se ingresó en el formulario.
 
+![Image 28](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/22.PNG)
+
 - Index Controlador
 
 POST: el método POST lo que se hace es obtener el dao de la empresa, el producto y la categoría para insertarlos
 dentro de cada una de las listas, de las cuales se van a imprimir en la tabla de la pagina principal index.js, después
 lo que se hace es validar las acciones de los botones, si se acciono el botón manda a llamar a los métodos
 listarPrincipal, listarPrincipal 1 , listarPrincipal 2 que está dentro del paquete jdbc.
+
+![Image 29](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/23.PNG)
 
 - Insertar Producto
 
@@ -332,6 +387,9 @@ después lo que se hace es validar las acciones de los botones, si se acciono el 
 nuevoProducto que está dentro del paquete jdbc, en el cual el método recibe 3 parametros que son del texto de
 ingreso del formulario, cabe mencionar que dos variables son enteras y una es String.
 
+![Image 30](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/24.PNG)
+
+![Image 31](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/25.PNG)
 
 - Listar Producto Controlador
 
@@ -342,6 +400,8 @@ redirige a la página listar del administrador.
 POST: el método POST lo que realiza es obtener el texto del formulario y la acción del botón Listar.jps y para el
 administrador ListarAdmin.jsp, después lo que se hace es validar las acciones de los botones, si se acciono el botón
 manda a llamar al método listarProductos que está dentro del paquete jdbc.
+
+![Image 32](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/26.PNG)
 
 - Login
 
@@ -357,6 +417,10 @@ parámetros: correo y clave de la página InicioSesion.jsp, a continuación se llam
 el id de la empresa que está en el método buscarEmpresa, una vez realizado todo este proceso entra a cada uno
 de las paginas principales JSP administrador o usuario.
 
+![Image 33](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/27.PNG)
+
+![Image 34](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/28.PNG)
+
 - Registrar Administrador
 
 GET: en el método GET del controlador lo que se realiza es redirigir al usuario a la página que corresponda, como
@@ -366,6 +430,8 @@ POST: el método POST lo que realiza es obtener el texto del formulario y la acci
 después lo que se hace es validar las acciones de los botones, si se acciono el botón manda a llamar al método
 actualizarProducto que está dentro del paquete jdbc, en el cual el método recibe 2 parámetros que son del texto de
 ingreso del formulario, de estos son el nombre del producto que desea cambiar y el nuevo nombre del producto.
+
+![Image 35](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/29.PNG)
 
 - Registrar Controlador
 
@@ -378,6 +444,8 @@ actualizarRequerimiento que está dentro del paquete jdbc, en el cual el método r
 de la base pasa a estar un requerimiento en estado de espera “E”. Solo se debe ingresar el nombre del producto
 que quiere registrar como requerimiento.
 
+![Image 36](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/30.PNG)
+
 - Usuario Controlador
 
 POST: el método POST lo que realiza es obtener el texto del formulario y la acción del botón Usuario.jps y del
@@ -385,7 +453,7 @@ administrador Admin.jsp, después lo que se hace es validar las acciones de los b
 manda a llamar a los métodos listarProducto, listarProducto0, listarProducto1, que están dentro del paquete jdbc,
 en el cual el método recibe cada uno un parámetro que es la lista de requerimientos, productos y empresa.
 
-
+![Image 37](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/31.PNG)
 
 - Filtro
 
@@ -400,10 +468,14 @@ Los WebFilter son las paginas que se vana bloquear si no inicio sesión estos son
 "/JSPs/AgregarProducto.jsp", "/JSPs/Buscar.jsp", "/JSPs/BuscarAdmin.jsp", "/JSPs/EliminarAdmin.jsp",
 "/JSPs/Listar.jsp", "/JSPs/ListarAdmin.jsp"})
 
+![Image 38](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/32.PNG)
+
 - Salir
 
 GET: en el método GET del controlador lo que se realiza es verificar si la sesión se creo y si la sesión esta siendo
 utilizada la invalida y la setea con un valor de null para no permitir el ingreso a la paginas privadas.
+
+![Image 39](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/33.PNG)
 
 ## CONCLUSIONES:
 
@@ -422,5 +494,11 @@ https://www.tutorialspoint.com/jsp/jsp_syntax.htm
 Nombre de estudiantes: Pedro Orellana David Cornejo Daniel Peralta
 
 # Firma de estudiante:
+
+![Image 40](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/34.PNG)
+
+![Image 41](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/35.PNG)
+
+![Image 42](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/36.PNG)
 
  
