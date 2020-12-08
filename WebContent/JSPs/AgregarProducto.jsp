@@ -35,7 +35,7 @@
 			<label for="sel">Categoria del producto: 1- SOBREMESA; 2- LAPTOP </label> 
 			<input name="sel" type="text" /><BR />
 			
-			<label for="req">Requerimiento del Producto: 1- DAVID CORNEJO; 2- PEDRO ORELLANA; 3- DANIEL PERALTA; 4- EL PEPE; 5- ETE SETCH: 6- ÑOY AÑAÑIN</label> 
+			<label for="req">Requerimiento del Producto: 1- DAVID CORNEJO; 2- PEDRO ORELLANA; 3- DANIEL PERALTA; 4- JUAN VASQUEZ; 5- PABLO CALLE: 6- DIEGO ORTEGA</label> 
 			<input name="req" type="text" /><BR />
 			
 			<button class="btn waves-effect waves-light green" type="submit" name="botonAgregar" value="agregar">AGREGAR</button>

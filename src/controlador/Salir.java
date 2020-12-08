@@ -42,6 +42,7 @@ public class Salir extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		if(session != null) {
+			System.out.println("entro");
 			Usuario usuario =null;
 			request.setAttribute("usu", usuario);
 			session.invalidate();
