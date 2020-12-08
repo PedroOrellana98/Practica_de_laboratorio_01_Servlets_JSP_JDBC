@@ -185,7 +185,7 @@ comandos:
 
 Para que estos funcionen las librerías debe estar previamente cargadas en la carpeta WEB-INF.
 
-![Image 15](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/11.PNG)
+![Image 15](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/11.png)
 
 # 2.2 JDBC: Composición de JDBCs, sentencias SQL y conexión con MySQL
 
@@ -225,7 +225,7 @@ entrada que son el correo y la clave que se obtienen del JSP de Inicio de Sesió
 El id y el rol se guardan en variables globales para utilizarlas en otros métodos, para colocar el valor del id se utiliza
 el comando rs.getString("id"); y para el rol el comando: rs.getString("id");
 
-![Image 16](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/12.png)
+![Image 16](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/12.PNG)
 
 - Buscar id de empresa
 
@@ -495,10 +495,10 @@ Nombre de estudiantes: Pedro Orellana David Cornejo Daniel Peralta
 
 # Firma de estudiante:
 
-![Image 40](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/36.PNG)
+![Image 40](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/36.png)
 
-![Image 41](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/37.PNG)
+![Image 41](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/37.png)
 
-![Image 42](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/38.PNG)
+![Image 42](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/38.png)
 
  
