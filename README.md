@@ -185,7 +185,7 @@ comandos:
 
 Para que estos funcionen las librerías debe estar previamente cargadas en la carpeta WEB-INF.
 
-![Image 15](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/11.png)
+![Image 15](https://github.com/PedroOrellana98/Practica_de_laboratorio_01_Servlets_JSP_JDBC/blob/main/Capturas%20Practica%2002/10.PNG)
 
 # 2.2 JDBC: Composición de JDBCs, sentencias SQL y conexión con MySQL
 
